@@ -8,6 +8,7 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/parent/:id', controller.parents);
+router.get('/category/:id', controller.category);
 router.get('/all', controller.all);
 router.get('/:id', controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);

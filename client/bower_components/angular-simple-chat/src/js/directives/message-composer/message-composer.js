@@ -38,7 +38,7 @@ function messageComposerController($scope) {
                 return;
             }
             var _message = {
-                id:  Math.random().toString(36).substring(7),
+                id: 'sc' + Date.now(),
                 type: 'message',
                 text: that.rawmessage,
                 userId: that.localUser.userId,

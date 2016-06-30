@@ -7,8 +7,7 @@ var auth = require('../../auth/auth.service');
 var router = express.Router();
 
 router.get('/my', auth.isAuthenticated() , controller.myOrders);
-router.get('/pub', auth.isAuthenticated() , controller.pubOrders);
-router.get('/', controller.index);
+router.get('/', auth.hasRole('admin'), controller.index);
 router.get('/:id', auth.hasRole('admin'), controller.show);
 router.post('/', auth.isAuthenticated(), controller.create);
 router.put('/:id', auth.hasRole('admin'), controller.update);

@@ -3,27 +3,22 @@
 angular.module('shopnxApp')
   .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
-     $scope.users = {};
     $scope.errors = {};
 
+    var custom_message = "Welcome"+""+$scope.user.name;
+
     $scope.register = function(form) {
-      console.log($scope.user);
       $scope.submitted = true;
-      
 
       if(form.$valid) {
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
-          password: $scope.user.password,
-          lastname:$scope.user.lastname,
-          phone:$scope.user.phone,
-          company:$scope.user.company,
-          currency:$scope.user.currency,
-          role:$scope.user.role
+          password: $scope.user.password
         })
         .then( function() {
           // Account created, redirect to the page with requested a signup
+          swal({   title: "Welcome!", imageUrl: "assets/img/logo.png" , text: "Thanks you for signing up enjoy convenience redefined.",   timer: 7000,   showConfirmButton: false });
           Auth.redirectToAttemptedUrl();
         })
         .catch( function(err) {

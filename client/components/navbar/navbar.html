@@ -1,84 +1,193 @@
 <div ng-controller="NavbarCtrl">
 <!-- *** TOPBAR ***
 _________________________________________________________ -->
-<div id="top">
+<div id="top" style="border:0px">
     <div class="container">
         <div class="col-md-6 offer" data-animate="fadeInDown">
-            <!-- <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Offer of the day</a>  <a href="#">Get flat 35% off on orders over $50!</a> -->
+            <a href="#" class="btn btn-danger btn-sm" data-animate-hover="shake">Offer of the day</a>  <a href="#">Get flat 35% off on orders over $50!</a>
         </div>
         <div class="col-md-6" data-animate="fadeInDown">
             <ul class="menu">
               <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
               <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
-              <li ng-show="isLoggedIn()"><a href="">Hello {{ getCurrentUser().name }} </a></li>
+              <li ng-show="isLoggedIn()"><a href="">Welcome {{ getCurrentUser().name }} </a></li>
               <li class="dropdown" ng-show="isLoggedIn()" dropdown="">
-                <a href="#" dropdown-toggle="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-dashboard">&nbsp;</i>Dashboard<b class="caret"></b>
+                <a href="#" data-toggle="dropdown"><i class="fa fa-dashboard">&nbsp;</i>My Aardath<b class="caret"></b>
                   </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/product')}">
-                    <a href="/product"><i class="fa fa-truck">&nbsp;</i>Products/Sites</a>
-                  </li>
-                  <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/category')}">
-                    <a href="/category"><i class="fa fa-ticket">&nbsp;</i>Platforms</a>
-                  </li> -->
-                 <!--  <li ng-show="isAdmin()" ng-class="{active: isActive('/brand')}">
-                    <a href="/brand"><i class="fa fa-tag">&nbsp;</i>Categories</a>
-                  </li> -->
-                 <!--  <li ng-show="isAdmin()" ng-class="{active: isActive('/feature')}">
-                    <a href="/feature"><i class="fa fa-tag">&nbsp;</i>Features</a>
-                  </li> -->
-                  <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/coupon')}">
-                    <a href="/coupon"><i class="fa fa-tag">&nbsp;</i>Coupons</a>
-                  </li> -->
+
+						<div class="dropdown dropdown-accordion" data-accordion="#accordion">
+							  
+							  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+							    <li>
+							      <div class="panel-group" id="accordion">
+							        <div class="panel panel-default">
+							          <div class="panel-heading">
+							            <h4 class="panel-title">
+							              <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
+							                Online Store
+							              </a>
+							            </h4>
+							          </div>
+							          <div class="panel-collapse collapse" id="collapseOne">
+							            <div class="panel-body">
+							              <ul class="list-group">
+											<li ng-show="isAdmin()"  ng-class="{active: isActive('/product')}">
+							                    <a href="/product"><i class="fa fa-truck">&nbsp;</i>Products</a>
+							                  </li>
+							                  <li ng-show="isAdmin()" ng-class="{active: isActive('/category')}">
+							                    <a href="/category"><i class="fa fa-ticket">&nbsp;</i>Categories</a>
+							                  </li>
+							                  <li ng-show="isAdmin()" ng-class="{active: isActive('/brand')}">
+							                    <a href="/brand"><i class="fa fa-tag">&nbsp;</i>Brands</a>
+							                  </li>
+							                  <li ng-show="isAdmin()" ng-class="{active: isActive('/feature')}">
+							                    <a href="/feature"><i class="fa fa-tag">&nbsp;</i>Features</a>
+							                  </li>
+							                  <li ng-show="isAdmin()" ng-class="{active: isActive('/coupon')}">
+							                    <a href="/coupon"><i class="fa fa-tag">&nbsp;</i>Coupons</a>
+							                  </li>
+							                  <li ng-show="isLoggedIn()" ng-class="{active: isActive('/order')}">
+							                    <a href="/order"><i class="fa fa-road">&nbsp;</i>Orders</a>
+							                  </li>
+											
+										</ul>
+							            </div>
+							          </div>
+							        </div>
 
 
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/media')}">
-                    <a href="/media"><i class="fa fa-tag">&nbsp;</i>Media</a>
-                  </li>
-                  
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/puborder')}">
-                    <a href="/puborder"><i class="fa fa-tag">&nbsp;</i>Orders</a>
+							        <div class="panel panel-default">
+							          <div class="panel-heading">
+							            <h4 class="panel-title">
+							              <a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion">
+							                Market Place
+							              </a>
+							            </h4>
+							          </div>
+							          <div class="panel-collapse collapse" id="collapseTwo">
+							            <div class="panel-body">
+							              <ul class="list-group">
+												<li ng-show="isAdmin()" ng-class="{active: isActive('/product')}">
+								                    <a href="/productmp"><i class="fa fa-truck">&nbsp;</i>Products</a>
+								                  </li>
+								                  <li ng-show="isAdmin()" ng-class="{active: isActive('/category')}">
+								                    <a href="/categorymp"><i class="fa fa-ticket">&nbsp;</i>Categories</a>
+								                  </li>
+								                  <li ng-show="isAdmin()" ng-class="{active: isActive('/brand')}">
+								                    <a href="/brandmp"><i class="fa fa-tag">&nbsp;</i>Brands</a>
+								                  </li>
+								                 
+								                  <li ng-show="isAdmin()" ng-class="{active: isActive('/coupon')}">
+								                    <a href="/couponmp"><i class="fa fa-tag">&nbsp;</i>Coupons</a>
+								                  </li>
+								                  <li ng-show="isLoggedIn()" ng-class="{active: isActive('/order')}">
+								                    <a href="/ordermp"><i class="fa fa-road">&nbsp;</i>Orders</a>
+								                  </li>
 
-                  </li>
-                
-                    <li ng-show="isLoggedIn()" ng-hide="isAdmin()" ng-class="{active: isActive('/campaign')}">
-                    <a href="/campaign"><i class="fa fa-road">&nbsp;</i>Campaigns</a>
-                  </li>
-                  <li ng-show="isLoggedIn()" ng-hide="isAdmin()" ng-class="{active: isActive('/order')}">
-                    <a href="/order"><i class="fa fa-road">&nbsp;</i>Transaction History</a>
-                  </li>
-                  </li>
-                  <li class="divider"></li>
+												
+											</ul>
+							            </div>
+							          </div>
+							        </div>
 
-                  <li ng-show="isLoggedIn()" ng-class="{active: isActive('/profile')}">
-                    <a href="/profile"><i class="fa fa-user">&nbsp;</i>Profile</a>
-                  </li>
-                   <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}">
-                    <a href="/settings"><i class="fa fa-user">&nbsp;</i>Change Password</a>
+							        <div class="panel panel-default">
+							          <div class="panel-heading">
+							            <h4 class="panel-title">
+							              <a href="#collapseTHREE" data-toggle="collapse" data-parent="#accordion">
+							                Order In
+							              </a>
+							            </h4>
+							          </div>
+							          <div class="panel-collapse collapse" id="collapseTHREE">
+							            <div class="panel-body">
+
+								<ul class="list-group">
+									<li ng-show="isAdmin()" ng-class="{active: isActive('/product')}">
+					                    <a href="/productoi"><i class="fa fa-truck">&nbsp;</i>Products</a>
+					                  </li>
+					                  <li ng-show="isAdmin()" ng-class="{active: isActive('/category')}">
+					                    <a href="/categoryoi"><i class="fa fa-ticket">&nbsp;</i>Categories</a>
+					                  </li>
+					                  <li ng-show="isAdmin()" ng-class="{active: isActive('/brand')}">
+					                    <a href="/brandoi"><i class="fa fa-tag">&nbsp;</i>Brands</a>
+					                  </li>
+					                 
+					                  <li ng-show="isAdmin()" ng-class="{active: isActive('/coupon')}">
+					                    <a href="/couponoi"><i class="fa fa-tag">&nbsp;</i>Coupons</a>
+					                  </li>
+					                  <li ng-show="isLoggedIn()" ng-class="{active: isActive('/order')}">
+					                    <a href="/orderoi"><i class="fa fa-road">&nbsp;</i>Orders</a>
+								</ul>
+
+							            </div>
+							          </div>
+							        </div>
+
+
+							        <div class="panel panel-default">
+							          <div class="panel-heading">
+							            <h4 class="panel-title">
+							              <a href="#collapseFour" data-toggle="collapse" data-parent="#accordion">
+							                Ticketing
+							              </a>
+							            </h4>
+							          </div>
+							          <div class="panel-collapse collapse" id="collapseFour">
+							            <div class="panel-body">
+							              
+				<ul class="list-group" >
+					<li ng-show="isAdmin()" ng-class="{active: isActive('/product')}">
+	                    <a href="/producttng"><i class="fa fa-truck">&nbsp;</i>Products</a>
+	                  </li>
+	                  <li ng-show="isAdmin()" ng-class="{active: isActive('/category')}">
+	                    <a href="/categorytng"><i class="fa fa-ticket">&nbsp;</i>Categories</a>
+	                  </li>
+	                  <li ng-show="isAdmin()" ng-class="{active: isActive('/brand')}">
+	                    <a href="/brandtng"><i class="fa fa-tag">&nbsp;</i>Brands</a>
+	                  </li>
+	                 
+	                  <li ng-show="isAdmin()" ng-class="{active: isActive('/coupon')}">
+	                    <a href="/coupontng"><i class="fa fa-tag">&nbsp;</i>Coupons</a>
+	                  </li>
+	                  <li ng-show="isLoggedIn()" ng-class="{active: isActive('/order')}">
+	                    <a href="/ordertng"><i class="fa fa-road">&nbsp;</i>Orders</a>
+	                  </li>
+				</ul>
+							            </div>
+							          </div>
+							        </div>
+							      </div>
+
+
+							    </li>
+
+
+				<li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}">
+                    <a href="/settings">Change Password</a>
                   </li>
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/customer')}">
-                    <a href="/customer"><i class="fa fa-user">&nbsp;</i>Customers</a>
+                    <a href="/customer">Customers</a>
                   </li>
-                 <!--  <li ng-show="isAdmin()" ng-class="{active: isActive('/paymentMethod')}">
-                    <a href="/paymentMethod"><i class="fa fa-wrench">&nbsp;</i>Payment Method</a>
-                  </li> -->
-                  <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/shipping')}">
-                    <a href="/shipping"><i class="fa fa-wrench">&nbsp;</i>Shipping Settings</a>
-                  </li> -->
+                  <li ng-show="isAdmin()" ng-class="{active: isActive('/paymentMethod')}">
+                    <a href="/paymentMethod">Payment Method</a>
+                  </li>
+                  <li ng-show="isAdmin()" ng-class="{active: isActive('/shipping')}">
+                    <a href="/shipping">Shipping Settings</a>
+                  </li>
                   <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/country')}">
                     <a href="/country"><i class="fa fa-wrench">&nbsp;</i>Country</a>
                   </li> -->
                   <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}">
-                    <a href="" ng-click="logout()"><i class="fa fa-sign-out">&nbsp;</i>Logout</a>
+                    <a href="" ng-click="logout()">Logout</a>
                   </li>
-                  <li class="divider"></li>
-                  </ul>
-                </li>
-                <li ng-show="isLoggedIn()"><a href="">Messages</a></li>
+							  </ul>
+							</div>
+
+       			</li>
                 <li><a href="/contact">Contact</a>
                 </li>
-                <!--<li><a href="/documentation">Documentation</a>
-                </li>-->
+                
+                </li>
             </ul>
         </div>
     </div>
@@ -120,67 +229,129 @@ _________________________________________________________ -->
 <!-- *** NAVBAR ***
 _________________________________________________________ -->
 
-<div class="navbar navbar-default yamm" role="navigation" id="navbar">
-    <div class="container">
-  <div class="col-md-12">
-        <div class="navbar-header">
 
-            <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
-                <img src="/assets/img/logo.png"  class="hidden-xs">
-                <img src="/assets/img/logo.png"  class="visible-xs"><span class="sr-only"></span>
-            </a>
-            <div class="navbar-buttons">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation" ng-click="isCollapsed1 = !isCollapsed1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="fa fa-align-justify"></i>
-                </button>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
-                    <span class="sr-only">Toggle search</span>
-                    <i class="fa fa-search"></i>
-                </button>
-                <a class="btn btn-default navbar-toggle" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-xs">({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
+  <nav class="navbar navbar-default">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+  </div>
+  
+  <div class="collapse navbar-collapse js-navbar-collapse">
+    <ul class="nav navbar-nav">
+    <li><a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
+                <img src="/assets/img/logo.png" alt="Aadarth logo" class="hidden-xs">
+                <img src="/assets/img/logo.png" alt="Aardath logo" class="visible-xs"><span class="sr-only">Aadarth Marketplace</span>
+    </a></li>
+    
+      <li class="dropdown mega-dropdown">
+        <a href="/" class="dropdown-toggle" data-toggle="dropdown">Online Store <span class="caret"></span></a>        
+        <ul class="dropdown-menu mega-dropdown-menu">
+          <!-- <li class="col-sm-3">
+         
+          </li> -->
+          
+          
+          <li class="col-sm-3" ng-repeat= "p in categories">
+              <a class="dropdown-header" href="#">{{p.name}} </a>
+         
+              <ul ng-repeat="c in p.sub_categories">
+                 <li><a ng-click="navigate({page:'Category',slug:c.slug ,id:c._id})">{{c.name}}</a>
+                                      </a>
+                                      </li>
+                     
+              
+              </ul>                       
+       
+          </li>
+        </ul>       
+      </li>
+       <li class="dropdown mega-dropdown">
+        <a href="/mainmp" class="dropdown-toggle" data-toggle="dropdown">Market Place <span class="caret"></span></a>        
+        <ul class="dropdown-menu mega-dropdown-menu">
+          <!-- <li class="col-sm-3">
+         
+          </li> -->
+          
+          
+          <li class="col-sm-3" ng-repeat= "p in categoriesMP">
+              <a class="dropdown-header" href="#">{{p.name}} </a>
+         
+              <ul ng-repeat="c in p.sub_categories">
+                  <li><a ng-click="navigate({page:'CategoryMP',slug:c.slug ,id:c._id})">{{c.name}}</a>
+                     
+              
+              </ul>                       
+       
+          </li>
+        </ul>       
+      </li>
+       <li class="dropdown mega-dropdown">
+        <a href="/mainoi" class="dropdown-toggle" data-toggle="dropdown">Order In <span class="caret"></span></a>        
+        <ul class="dropdown-menu mega-dropdown-menu">
+          <!-- <li class="col-sm-3">
+         
+          </li> -->
+          
+          
+          <li class="col-sm-3" ng-repeat= "p in categoriesOI">
+              <a class="dropdown-header" href="#">{{p.name}} </a>
+         
+              <ul ng-repeat="c in p.sub_categories">
+                  <li><a ng-click="navigate({page:'CategoryOI',slug:c.slug ,id:c._id})">{{c.name}}</a>
+                     
+              
+              </ul>                       
+       
+          </li>
+        </ul>       
+      </li>
+       <li class="dropdown mega-dropdown">
+        <a href="/maintng" class="dropdown-toggle" data-toggle="dropdown">Ticketing <span class="caret"></span></a>        
+        <ul class="dropdown-menu mega-dropdown-menu">
+          <!-- <li class="col-sm-3">
+         
+          </li> -->
+          
+          
+          <li class="col-sm-3" ng-repeat= "p in categoriesTNG">
+              <a class="dropdown-header" href="#">{{p.name}} </a>
+         
+              <ul ng-repeat="c in p.sub_categories">
+                  <li><a ng-click="navigate({page:'CategoryTNG',slug:c.slug ,id:c._id})">{{c.name}}</a>
+              
+              </ul>                       
+       
+          </li>
+        </ul>       
+      </li>
+      <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 
+      </ul>
+                    
+       
+        <ul class="nav navbar-nav navbar-right" style="align:right">
+      
+
+        <li>
+             <div class="navbar-buttons">
+
+             <div class="navbar-collapse collapse right" id="basket-overview">
+                <a class="btn btn-danger navbar-btn" ng-click="openWishlist(wishlist,'lg');" href=""><i class="fa fa-heart">&nbsp;</i> <span class="hidden-sm">({{wishlist.getTotalCount()}}) </a>
             </div>
-        </div>
-        <!--/.navbar-header -->
+            &nbsp;&nbsp;
 
-        <div class="navbar-collapse collapse navbar-static-top megamenu" id="navigation">
-          <div collapse="isCollapsed1" class="navbar-collapse collapse" id="navbar-main2">
-            <ul class="nav navbar-nav navbar-left">
-                <li class="dropdown yamm-fw" ng-repeat= "p in categories">
-                    <a href="Category/{{p.slug}}/{{p._id}}" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">{{p.name}} <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="yamm-content">
-                                <div class="row">
-                                    <div class="col-sm-3" ng-repeat="c in p.sub_categories">
-                                        <!-- <h5>All</h5> -->
-                                        <ul>
-                                            <li><a href="/Category/{{c.slug}}/{{c._id}}" ng-click="hideSubMenu();">{{c.name}}</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.yamm-content -->
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-          </div>
-        </div>
-        <!--/.nav-collapse -->
-
-        <div class="navbar-buttons">
-
-            <small></small><div class="navbar-collapse collapse right" id="basket-overview">
-                <a class="btn btn-primary navbar-btn" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-sm">({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
+            <div class="navbar-collapse collapse right" id="basket-overview">
+                <a class="btn btn-danger navbar-btn" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-sm">Cart ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
             </div>
-            </small>
             <!--/.nav-collapse -->
 
             <div class="navbar-collapse collapse right" id="search-not-mobile">
-                <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
+                <button type="button" class="btn navbar-btn btn-danger" data-toggle="collapse" data-target="#search">
                     <span class="sr-only">Toggle search</span>
                     <i class="fa fa-search"></i>
                 </button>
@@ -188,8 +359,20 @@ _________________________________________________________ -->
 
         </div>
 
+
+        </li>
+      </ul>
+  </div><!-- /.nav-collapse -->
+  </nav>
+
+
         <div class="collapse clearfix" id="search">
-          <form id="searchForm" class="ng-scope ng-pristine ng-valid navbar-form" role="search">
+
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            
+              <form id="searchForm" class="ng-scope ng-pristine ng-valid navbar-form" role="search">
             <div class="nav-search text-center" id="nav-search">
               <span class="input-icon">
                 <script type="text/ng-template" id="searchTemplate.html">
@@ -197,7 +380,7 @@ _________________________________________________________ -->
                 </script>
                 <div class="input-group">
                 <input class="form-control text-left" type="text" name="q" id="q" autocomplete="off"
-                placeholder="Search for a Seller, category ..."
+                placeholder="Search for a product, category or brand..."
                 ng-model="search"
                 typeahead="p as p.name for p in globalSearch($viewValue)"
                 typeahead-loading="loadingLocations"
@@ -208,12 +391,16 @@ _________________________________________________________ -->
                 >
                 <span class="input-group-btn">
 
-<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>Search</button>
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>Search</button>
 
-</span>
+                </span>
               </div>
             </span>
           </form>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+          
 
             <!-- <form class="navbar-form" role="search">
                 <div class="input-group">
@@ -227,12 +414,68 @@ _________________________________________________________ -->
             </form> -->
 
         </div>
-        <!--/.nav-collapse -->
 
-    </div>
-    <!-- /.container -->
+
+
+
+
 </div>
-<!-- /#navbar -->
-</div>
-<!-- *** NAVBAR END *** -->
-</div>
+
+<script> 
+	$(function(){
+	$(".dropdown-menu > li > a.trigger").on("click",function(e){
+		var current=$(this).next();
+		var grandparent=$(this).parent().parent();
+		if($(this).hasClass('left-caret')||$(this).hasClass('right-caret'))
+			$(this).toggleClass('right-caret left-caret');
+		grandparent.find('.left-caret').not(this).toggleClass('right-caret left-caret');
+		grandparent.find(".sub-menu:visible").not(current).hide();
+		current.toggle();
+		e.stopPropagation();
+	});
+	$(".dropdown-menu > li > a:not(.trigger)").on("click",function(){
+		var root=$(this).closest('.dropdown');
+		root.find('.left-caret').toggleClass('right-caret left-caret');
+		root.find('.sub-menu:visible').hide();
+	});
+});
+</script>
+
+<script>
+  $(document).ready(function(){
+
+
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+            $(this).toggleClass('open');       
+        }
+    );
+});
+</script>
+<script >
+   $(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a') ) {
+        $(this).collapse('hide');
+    }
+});
+</script>
+<script>
+// Collapse accordion every time dropdown is shown
+$('.dropdown-accordion').on('show.bs.dropdown', function (event) {
+  var accordion = $(this).find($(this).data('accordion'));
+  accordion.find('.panel-collapse.in').collapse('hide');
+});
+
+// Prevent dropdown to be closed when we click on an accordion link
+$('.dropdown-accordion').on('click', 'a[data-toggle="collapse"]', function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+  $($(this).data('parent')).find('.panel-collapse.in').collapse('hide');
+  $($(this).attr('href')).collapse('show');
+})
+</script>

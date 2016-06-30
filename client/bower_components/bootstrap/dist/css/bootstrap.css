@@ -734,10 +734,11 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 0px;
+  padding-left: 0px;
   margin-right: auto;
   margin-left: auto;
+  min-width: 1170px;
 }
 @media (min-width: 768px) {
   .container {
@@ -751,7 +752,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+   
   }
 }
 .container-fluid {

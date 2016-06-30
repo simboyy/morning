@@ -15,9 +15,9 @@
     "angular-toastr": "~1.5.0",
     "angular-ui-router": "~0.2.15",
     "angularjs-slider": "~0.1.29",
-    "bootstrap": "~3.1.1",
+    "bootstrap": "~3.3.6",
     "checklist-model": "~0.5.0",
-    "components-font-awesome": "~4.4.0",
+    "components-font-awesome": "~4.6.3",
     "es5-shim": "~3.0.1",
     "font-awesome": "~4.4.0",
     "json3": "~3.3.1",
@@ -32,7 +32,12 @@
     "angular-simple-chat": "~1.0.10",
     "angular-material": "~1.0.7",
     "angular-random-string": "~0.1.0",
-    "angular-filter": "~0.5.8"
+    "angular-filter": "~0.5.8",
+    "angular-base64-upload": "~0.1.19",
+    "ng-table": "~0.8.3",
+    "angular-smart-table": "~2.1.8",
+    "angular-touch": "~1.5.7",
+    "ng-password-strength": "~0.2.1"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

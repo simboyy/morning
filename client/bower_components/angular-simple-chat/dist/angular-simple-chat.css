@@ -162,7 +162,6 @@ simple-chat {
 .simple-chat-container {
   overflow-y: scroll;
   height: calc(100% - 50px);
-  min-height: 400px;
 }
 
 .simple-chat-container.full-height {

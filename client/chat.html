@@ -1,57 +1,40 @@
-<!-- <div class="modal-header">
-            <h3 class="modal-title"> <img class="img-thumbnail" style="width: 75px;height:50px" data-ng-src="data:image/png;base64,{{items.image}}" data-err-src="images/png/avatar.png"/>{{items.publisher}}</h3>
-        </div> -->
- 
- <!-- <div class="row" style="margin: 10px">
-        	<simple-chat
-            messages="messages"
-            local-user="you"
-            send-function="sendMessage"
-            send-button-text="Send"
-            show-user-avatar="true"
-            show-composer="true"
-            composer-placeholder-text="Write your message here"
-  ></simple-chat> -->
-
-  <div class="container">
-    <div class="row">
-        <div  style="width: 55%">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <span class="glyphicon glyphicon-comment"></span> Chat
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-chevron-down"></span>
-                        </button>
-                        <ul class="dropdown-menu slidedown">
-                            <!-- <li><a href="#"><span class="glyphicon glyphicon-refresh">
-                            </span>Refresh</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-ok-sign">
-                            </span>Available</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-remove">
-                            </span>Busy</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-time"></span>
-                                Away</a></li> -->
-                            <li class="divider"></li>
-                            <li><a ng-click="cancel()"><span class="glyphicon glyphicon-off"></span>
-                                Close</a></li>
-                        </ul>
+<div ng-show="visible" class="row chat-window col-xs-5 col-md-3 {{theme}}" ng-class="{minimized: isHidden}">
+    <div class="col-xs-12 col-md-12">
+        <div class="panel">
+            <div class="panel-heading chat-top-bar">
+                <div class="col-md-8 col-xs-8">
+                    <h3 class="panel-title">{{title}}</h3>
+                </div>
+                <div class="col-md-4 col-xs-4 window-actions" style="text-align: right;">
+                    <span class="fa" ng-class="chatButtonClass" ng-click="toggle()"></span>
+                </div>
+            </div>
+            <div class="panel-body" ng-style="vm.panelStyle">
+                <div class="msg-container-base">
+                    <div class="row msg-container" ng-repeat="message in messages" ng-init="selfAuthored = myUserId == message.fromUserId">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="chat-msg" ng-class="{'chat-msg-sent': selfAuthored, 'chat-msg-recieved': !selfAuthored}">
+                                <span class="hide">myUserId:{{vm.myUserId}}</span>
+                                <img ng-if="message.imageUrl" class="profile" ng-class="{'pull-right': selfAuthored, 'pull-left': !selfAuthored}" ng-src="{{message.imageUrl}}" />
+                                <p>{{message.content}}</p>
+                                <div class="chat-msg-author">
+                                    <strong>{{message.username}}</strong>&nbsp;
+                                    <span class="date">{{message.date|date:hh:mm:a}}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="panel-body">
-                     
-					 <div class="row"  >
-					        	<simple-chat
-					            messages="messages"
-					            local-user="you"
-					            send-function="sendMessage"
-					            send-button-text="Send"
-					            show-user-avatar="true"
-					            show-composer="true"
-					            composer-placeholder-text="Write your message here"
-					  ></simple-chat>
+                <div class="chat-bottom-bar">
+                    <form style="display:inherit" ng-submit="submitFunction()">
+                        <div class="input-group" >
+                            <input type="text" class="form-control input-sm chat-input" placeholder="{{inputPlaceholderText}}" ng-model="writingMessage" />
+                        <span class="input-group-btn">
+                            <input type="submit" class="btn btn-sm chat-submit-button" value="{{submitButtonText}}" />
+                        </span>
+                        </div>
+                    </form>
                 </div>
-               
             </div>
         </div>
     </div>

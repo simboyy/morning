@@ -1,0 +1,17 @@
+{"__v":0,"_id":{"$oid":"56d359719c6733d81c244b40"},"active":true,"key":"Gender","val":"Male"}
+{"__v":0,"_id":{"$oid":"56d359719c6733d81c244b41"},"active":true,"key":"Gender","val":"Female"}
+{"__v":0,"_id":{"$oid":"56d359719c6733d81c244b42"},"active":true,"key":"income","val":"15-24 k"}
+{"__v":0,"_id":{"$oid":"56d359719c6733d81c244b43"},"active":true,"key":"income","val":"25-39 k"}
+{"__v":0,"_id":{"$oid":"56d359719c6733d81c244b44"},"active":true,"key":"income","val":"40-59k"}
+{"__v":0,"_id":{"$oid":"56d359719c6733d81c244b45"},"active":true,"key":"income","val":"60-74k"}
+{"__v":0,"_id":{"$oid":"56d359719c6733d81c244b4a"},"active":true,"key":"age","val":"18-24"}
+{"__v":0,"_id":{"$oid":"56d359719c6733d81c244b4b"},"active":true,"key":"age","val":"25-34"}
+{"__v":0,"_id":{"$oid":"56d359719c6733d81c244b4c"},"active":true,"key":"age","val":"35-44"}
+{"__v":0,"_id":{"$oid":"56d359719c6733d81c244b4d"},"active":true,"key":"age","val":"45-54"}
+{"__v":0,"_id":{"$oid":"56d40c21c01fa5541d456033"},"active":true,"key":"income","val":"75-99K"}
+{"__v":0,"_id":{"$oid":"56d40c43c01fa5541d456034"},"active":true,"key":"income","val":"100+ k"}
+{"__v":0,"_id":{"$oid":"56d40cecc01fa5541d456035"},"active":true,"key":"age","val":"55-64"}
+{"__v":0,"_id":{"$oid":"56d40cf8c01fa5541d456036"},"active":true,"key":"age","val":"65 +"}
+{"__v":0,"_id":{"$oid":"56d4b4b061fcedc8053a2863"},"active":true,"key":"Gender","val":"all"}
+{"__v":0,"_id":{"$oid":"56d4b4c461fcedc8053a2864"},"active":true,"key":"income","val":"all"}
+{"__v":0,"_id":{"$oid":"56d4b4d461fcedc8053a2865"},"active":true,"key":"age","val":"all"}

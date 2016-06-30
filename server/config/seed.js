@@ -5,22 +5,68 @@
 
 'use strict';
 
-var Publisher = require('../api/publisher/publisher.model');
-
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Setting = require('../api/setting/setting.model');
+
 var Product = require('../api/product/product.model');
+var ProductMP = require('../api/productMP/productmp.model');
+var ProductOI = require('../api/productOI/productoi.model');
+var ProductTNG = require('../api/productTNG/producttng.model');
+
 var Category = require('../api/category/category.model');
+var CategoryMP = require('../api/categoryMP/categorymp.model');
+var CategoryOI = require('../api/categoryOI/categoryoi.model');
+var CategoryTNG = require('../api/categoryTNG/categorytng.model');
+
 var Brand = require('../api/brand/brand.model');
+var BrandMP = require('../api/brandMP/brandmp.model');
+var BrandOI = require('../api/brandOI/brandoi.model');
+//var BrandTN= require('../api/brandTN/brandTN.model');
+
 var PaymentMethod = require('../api/PaymentMethod/PaymentMethod.model');
 var Setting = require('../api/setting/setting.model');
 var Feature = require('../api/feature/feature.model');
-var Statistic = require('../api/statistic/statistic.model');
+
 var Coupon = require('../api/coupon/coupon.model');
+var CouponMP = require('../api/couponMP/couponmp.model');
+var CouponOI = require('../api/couponOI/couponoi.model');
+var CouponTNG = require('../api/couponTNG/coupontng.model');
+
 var Shipping = require('../api/shipping/shipping.model');
 var Country = require('../api/country/country.model');
+var Suburb = require('../api/suburb/suburb.model');
 
+Suburb.find(function (err, data) {
+  if(data.length < 1){
+    Suburb.create(
+      {
+      	"_id" : "561cbd6fc3c4fab4009caa0e",
+        "name" : "Mandara",
+        "active" : true,
+     
+      },
+      {
+      	"_id" : "5607a6af0dc20f1b0366522a",
+        "name" : "Mt Pleasent",
+        "active" : true,
+ 
+      },
+      {
+      	"_id" : "561f7ff6fb2f8dac199a618f",
+         "name" : "Avenues",
+        "active" : true,
+ 
+      },
+      {
+      	"_id" : "561f73dbe87e75d814a98f5a",
+         "name" : "Borrowdale",
+        "active" : true,
+    
+      }
+    );
+  }
+});
 
 Shipping.find(function (err, data) {
   if(data.length < 1){
@@ -74,6 +120,9 @@ Shipping.find(function (err, data) {
   }
 });
 
+
+
+
 Coupon.find(function (err, data) {
   if(data.length < 1){
     Coupon.create(
@@ -90,7 +139,6 @@ Coupon.find(function (err, data) {
     );
   }
 });
-
 
 Feature.find(function (err, data) {
   if(data.length < 1){
@@ -109,24 +157,6 @@ Feature.find(function (err, data) {
       {"key" : "Color", "val" : "Green", "active" : true},
       {"key" : "Color", "val" : "Blue", "active" : true},
       {"key" : "Color", "val" : "White", "active" : true}
-    );
-  }
-});
-
-Statistic.find(function (err, data) {
-  if(data.length < 1){
-    Statistic.create(
-      {"key" : "Reach/Frequency", "val" : "", "active" : true},
-      {"key" : "Page Views", "val" : "", "active" : true},
-      {"key" : "Total Audience", "val" : "", "active" : true},
-      {"key" : "Digital Subscribers", "val" : "", "active" : true},
-      {"key" : "SMS Reach", "val" : "", "active" : true},
-      {"key" : "Email Subscribers", "val" : "", "active" : true},
-      {"key" : "Facebook Subscribers", "val" : "", "active" : true},
-      {"key" : "Newsletter Subscribers", "val" : "", "active" : true},
-      {"key" : "Twitter Subscribers", "val" : "", "active" : true}, function() {
-        console.log('finished populating stats');
-    }
     );
   }
 });
@@ -150,11 +180,6 @@ PaymentMethod.find(function (err, data) {
     {
         name: 'PayPal',
         email: '2lessons@gmail.com',
-        active : true
-    },
-    {
-        name: 'PayNow',
-        email: 'smkorera@gmail.com',
         active : true
     },
     {
@@ -217,33 +242,26 @@ User.find(function (err, data) {
     User.create({
       provider: 'local',
       name: 'Test User',
-      email: 'user@codenx.com',
-      password: 'codenx'
+      email: 'user@aardath.com',
+      password: 'aardath'
     }, {
       provider: 'local',
       role: 'admin',
       name: 'Admin',
-      email: 'admin@codenx.com',
-      password: 'codenx'
+      email: 'admin@aardath.com',
+      password: 'aardath'
     }, function() {
         console.log('finished populating users');
     });
   }
 });
 
-
-Publisher.find(function (err, data) {
+Product.find(function (err, data) {
   if(data.length < 1){
-    Publisher.create({
+    Product.create({
     "_id" : "5607a6af0dc20f1b0366522a",
-    "firstname" : "Simbarashe",
-    "lastname": "Mukorera",
-    "email": "smkorera@gmail.com",
-    "phone":"0773439246",
-    "url":"www.ubs.com",
-    "company":"ubs",
-    "country":"zimbabwe",
-    "type" : "Men",
+    "name" : "ArrowGrey Slim Fit Formal Trouser",
+    "info" : "Complete your formal attire by wearing these grey coloured formal trousers from Arrow. Made from poly viscose, these trousers can be worn with complete ease and comfort. Featuring a smooth finish and flat front, these trousers with cross pockets at the sides can be clubbed with a modish formal shirt for a perfect look. ",
     "brand" : {
         "active" : true,
         "__v" : 0,
@@ -252,119 +270,71 @@ Publisher.find(function (err, data) {
         "name" : "Alleviater",
         "_id" : "5607c5c1dddfb6780c5bddf8"
     },
-    "description" : "Complete your formal attire by wearing these grey coloured formal trousers from Arrow. Made from poly viscose, these trousers can be worn with complete ease and comfort. Featuring a smooth finish and flat front, these trousers with cross pockets at the sides can be clubbed with a modish formal shirt for a perfect look. ",
-    "stats":[{
-        "Reach/Frequency":"3000",
-        "Page Views": "6000",
-        "Total Audience":"3.2 K",
-        "Digital Suscribers":"1.4 k",
-        "Email Suscribers":"3 k"
-              }],
-    "audience":[{"age":["18-24","25-34","35-44","45-54","55-64","65-74"],
-                "income": ["25k-34k", "35k-44k","45k-54k","55-64","65-74","75-84","85-94","95-100","100+"],
-                "gender":["male","female"]}],
-    "callout": ["Bonus Offer", "Sale"],
-    "mediaKit":[{
-            "_id":"adspc-1344466235",
-            "name": "Top Banner",
-            "price": "22",
-            "adSize":"300x300",
-            "maxSize":"10 mb",
-            "adFormat": ["jpeg","png","flash"],
-            "pricing":"Daily"
-           
-    },
-    {
-          "_id":"adspc-0390444435",
-            "name": "Sponsored Links",
-            "price": "5",
-            "adSize":"",
-            "maxSize":"100 letters",
-            "adFormat": ["jpeg","png","flash"],
-            "pricing":"Daily"
-           
-    },
-    {
-            "_id":"adspc-99093444435",
-            "name": "Top Content Left (300x100)",
-            "price": "16.5",
-            "adSize":"300x100",
-            "maxSize":"10 mb",
-            "adFormat": ["jpeg","png","flash"],
-            "pricing":"Daily"
-           
-    },
-    {
-            "adspace_id":"adspc-09003444435",
-            "name": "Top Content Right (300x100)",
-            "price": "16.5",
-            "adSize":"300x100",
-            "maxSize":"10 mb",
-            "adFormat": ["jpeg","png","flash"],
-            "pricing":"Daily"
-           
-    },
-    {
-            "_id":"adspc-093044894435",
-            "name": "Bottom Content Right (300x100) ",
-            "price": "11",
-            "adSize":"300x100",
-            "maxSize":"10 mb",
-            "adFormat": ["jpeg","png","flash"],
-            "pricing":"Daily"
-           
-    },
-    {
-            "_id":"adspc-0937044443115",
-            "name": "Bottom Content Right(300x100)",
-            "price":"11",
-            "adSize":"300x100",
-            "maxSize":"10 mb",
-            "adFormat": ["jpeg","png","flash"],
-            "pricing":"Daily"
-           
-    },
-    {
-           "_id":"adspc-098344443905",
-            "Name": "Scyscrapper(300x600)",
-            "price": "22",
-            "adSize":"300x300",
-            "maxSize":"10 mb",
-            "adFormat": ["jpeg","png","flash"],
-            "pricing":"Daily"
-    
-           
-    },
-    {
-            "_id":"adspc-098900444435",
-            "Name": "Right Button 1 (300x300)",
-            "price": "22",
-            "adSize":"300x300",
-            "maxSize":"10 mb",
-            "adFormat": ["jpeg","png","flash"],
-            "pricing":"Daily"
-           
-    },
-    {
-            "_id":"adspc-098344443775",
-            "Name": "Right Button 2 (300x300)",
-            "price": "16.5",
-            "adSize":"300x300",
-            "maxSize":"10 mb",
-            "adFormat": ["jpeg","png","flash"],
-            "pricing":"Daily"
-           
-    },
-    {
-            "_id":"adspc-0909983444435",
-            "name": "Right Button 3(300x300)",
-            "price": "16.5",
-            "adSize":"300x300",
-            "maxSize":"10 mb",
-            "adFormat": ["jpeg","png","flash"],
-            "pricing":"Daily"
-           
-    }],
+    "nameLower" : "arrowgrey slim fit formal trouser",
+    "active" : true,
+    "sku" : 5,
+    "type" : "Men",
+    "slug" : "arrowgrey-slim-fit-formal-trouser",
+    "variants" : [
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "30",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "32",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "34",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "36",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "38",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        }
+    ],
+    "keyFeatures" : [],
+    "features" : [
+        {
+            "key" : "Fabric",
+            "val" : "Blended"
+        },
+        {
+            "key" : "Fit",
+            "val" : "Slim"
+        },
+        {
+            "key" : "Color",
+            "val" : "Grey"
+        },
+        {
+            "key" : "Style",
+            "val" : "Solid"
+        },
+        {
+            "key" : "Model Stats",
+            "val" : "This model has height 6'4\",Chest 38\",Waist 31\"and is Wearing Size 32."
+        }
+    ],
     "category" : {
         "active" : true,
         "slug" : "casual-trousers",
@@ -374,232 +344,292 @@ Publisher.find(function (err, data) {
         "name" : "Casual Trousers",
         "_id" : "560774dad4124c770bfc4b68"
     },
-    "active" : true,
-    "keyFeatures" : [],
     "__v" : 0
 }, function() {
-        console.log('finished populating publishers');
+        console.log('finished populating products');
     });
   }
 });
 
-Product.find(function (err, data) {
+ProductMP.find(function (err, data) {
   if(data.length < 1){
-    Product.create({
-  "_id": {
-    "$oid": "5607a6af0dc20f1b0366522a"
-  },
-  "active": true,
-  "brand": {
-    "_id": "5607c5c1dddfb6780c5bddf8",
-    "info": "Education and Health",
-    "name": "Education and Health",
-    "slug": "alleviater"
-  },
-  "category": {
-    "_id": "56d3608e4af80dd8151a73c0",
-    "category": "987",
-    "name": "Email Marketing",
-    "parentCategory": "130",
-    "slug": "email-marketing"
-  },
-  "features": [
-    {
-      "key": "Fabric",
-      "val": "Blended"
+    ProductMP.create({
+    "_id" : "5607a6af0dc20f1b0366522a",
+    "name" : "ArrowGrey Slim Fit Formal Trouser",
+    "info" : "Complete your formal attire by wearing these grey coloured formal trousers from Arrow. Made from poly viscose, these trousers can be worn with complete ease and comfort. Featuring a smooth finish and flat front, these trousers with cross pockets at the sides can be clubbed with a modish formal shirt for a perfect look. ",
+    "brand" : {
+        "active" : true,
+        "__v" : 0,
+        "slug" : "alleviater",
+        "info" : "Alleviater",
+        "name" : "Alleviater",
+        "_id" : "5607c5c1dddfb6780c5bddf8"
     },
-    {
-      "key": "Fit",
-      "val": "Slim"
+    "nameLower" : "arrowgrey slim fit formal trouser",
+    "active" : true,
+    "sku" : 5,
+    "type" : "Men",
+    "slug" : "arrowgrey-slim-fit-formal-trouser",
+    "variants" : [
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "30",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "32",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "34",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "36",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "38",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        }
+    ],
+    "keyFeatures" : [],
+    "features" : [
+        {
+            "key" : "Fabric",
+            "val" : "Blended"
+        },
+        {
+            "key" : "Fit",
+            "val" : "Slim"
+        },
+        {
+            "key" : "Color",
+            "val" : "Grey"
+        },
+        {
+            "key" : "Style",
+            "val" : "Solid"
+        },
+        {
+            "key" : "Model Stats",
+            "val" : "This model has height 6'4\",Chest 38\",Waist 31\"and is Wearing Size 32."
+        }
+    ],
+    "category" : {
+        "active" : true,
+        "slug" : "casual-trousers",
+        "__v" : 0,
+        "parentCategory" : 1,
+        "category" : 100,
+        "name" : "Casual Trousers",
+        "_id" : "560774dad4124c770bfc4b68"
     },
-    {
-      "key": "Color",
-      "val": "Grey"
+    "__v" : 0
+}, function() {
+        console.log('finished populating products');
+    });
+  }
+});
+
+ProductOI.find(function (err, data) {
+  if(data.length < 1){
+    ProductOI.create({
+    "_id" : "5607a6af0dc20f1b0366522a",
+    "name" : "ArrowGrey Slim Fit Formal Trouser",
+    "info" : "Complete your formal attire by wearing these grey coloured formal trousers from Arrow. Made from poly viscose, these trousers can be worn with complete ease and comfort. Featuring a smooth finish and flat front, these trousers with cross pockets at the sides can be clubbed with a modish formal shirt for a perfect look. ",
+    "brand" : {
+        "active" : true,
+        "__v" : 0,
+        "slug" : "alleviater",
+        "info" : "Alleviater",
+        "name" : "Alleviater",
+        "_id" : "5607c5c1dddfb6780c5bddf8"
     },
-    {
-      "key": "Style",
-      "val": "Solid"
+    "nameLower" : "arrowgrey slim fit formal trouser",
+    "active" : true,
+    "sku" : 5,
+    "type" : "Men",
+    "slug" : "arrowgrey-slim-fit-formal-trouser",
+    "variants" : [
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "30",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "32",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "34",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "36",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "38",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        }
+    ],
+    "keyFeatures" : [],
+    "features" : [
+        {
+            "key" : "Fabric",
+            "val" : "Blended"
+        },
+        {
+            "key" : "Fit",
+            "val" : "Slim"
+        },
+        {
+            "key" : "Color",
+            "val" : "Grey"
+        },
+        {
+            "key" : "Style",
+            "val" : "Solid"
+        },
+        {
+            "key" : "Model Stats",
+            "val" : "This model has height 6'4\",Chest 38\",Waist 31\"and is Wearing Size 32."
+        }
+    ],
+    "category" : {
+        "active" : true,
+        "slug" : "casual-trousers",
+        "__v" : 0,
+        "parentCategory" : 1,
+        "category" : 100,
+        "name" : "Casual Trousers",
+        "_id" : "560774dad4124c770bfc4b68"
     },
-    {
-      "key": "Model Stats",
-      "val": "This model has height 6'4\",Chest 38\",Waist 31\"and is Wearing Size 32."
-    }
-  ],
-  "info": "Zimbabwe newspapers",
-  "keyFeatures": [],
-  "stats": [
-    {
-      "Reach/Frequency": "3000",
-      "Page Views": "6000",
-      "Total Audience": "3.2 K",
-      "Digital Suscribers": "1.4 k",
-      "Email Suscribers": "3 k"
-    }
-  ],
-  "callout": [
-    "Bonus Offer",
-    "Sale"
-  ],
-  "mediaKit": [
-    {
-      "_id": "adspc-1344466235",
-      "name": "Top Banner",
-      "price": "22",
-      "adSize": "300x300",
-      "maxSize": "10 mb",
-      "adFormat": [
-        "jpeg",
-        "png",
-        "flash"
-      ],
-      "pricing": "Daily"
+    "__v" : 0
+}, function() {
+        console.log('finished populating products');
+    });
+  }
+});
+
+ProductTNG.find(function (err, data) {
+  if(data.length < 1){
+    ProductTNG.create({
+    "_id" : "5607a6af0dc20f1b0366522a",
+    "name" : "ArrowGrey Slim Fit Formal Trouser",
+    "info" : "Complete your formal attire by wearing these grey coloured formal trousers from Arrow. Made from poly viscose, these trousers can be worn with complete ease and comfort. Featuring a smooth finish and flat front, these trousers with cross pockets at the sides can be clubbed with a modish formal shirt for a perfect look. ",
+    "brand" : {
+        "active" : true,
+        "__v" : 0,
+        "slug" : "alleviater",
+        "info" : "Alleviater",
+        "name" : "Alleviater",
+        "_id" : "5607c5c1dddfb6780c5bddf8"
     },
-    {
-      "_id": "adspc-0390444435",
-      "name": "Sponsored Links",
-      "price": "5",
-      "adSize": "",
-      "maxSize": "100 letters",
-      "adFormat": [
-        "jpeg",
-        "png",
-        "flash"
-      ],
-      "pricing": "Daily"
+    "nameLower" : "arrowgrey slim fit formal trouser",
+    "active" : true,
+    "sku" : 5,
+    "type" : "Men",
+    "slug" : "arrowgrey-slim-fit-formal-trouser",
+    "variants" : [
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "30",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "32",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "34",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "36",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        },
+        {
+            "mrp" : 1699.0000000000000000,
+            "price" : 1699.0000000000000000,
+            "size" : "38",
+            "weight" : "130",
+            "image" : "handsome-916499_640.jpg"
+        }
+    ],
+    "keyFeatures" : [],
+    "features" : [
+        {
+            "key" : "Fabric",
+            "val" : "Blended"
+        },
+        {
+            "key" : "Fit",
+            "val" : "Slim"
+        },
+        {
+            "key" : "Color",
+            "val" : "Grey"
+        },
+        {
+            "key" : "Style",
+            "val" : "Solid"
+        },
+        {
+            "key" : "Model Stats",
+            "val" : "This model has height 6'4\",Chest 38\",Waist 31\"and is Wearing Size 32."
+        }
+    ],
+    "category" : {
+        "active" : true,
+        "slug" : "casual-trousers",
+        "__v" : 0,
+        "parentCategory" : 1,
+        "category" : 100,
+        "name" : "Casual Trousers",
+        "_id" : "560774dad4124c770bfc4b68"
     },
-    {
-      "_id": "adspc-99093444435",
-      "name": "Top Content Left (300x100)",
-      "price": "16.5",
-      "adSize": "300x100",
-      "maxSize": "10 mb",
-      "adFormat": [
-        "jpeg",
-        "png",
-        "flash"
-      ],
-      "pricing": "Daily"
-    },
-    {
-      "adspace_id": "adspc-09003444435",
-      "name": "Top Content Right (300x100)",
-      "price": "16.5",
-      "adSize": "300x100",
-      "maxSize": "10 mb",
-      "adFormat": [
-        "jpeg",
-        "png",
-        "flash"
-      ],
-      "pricing": "Daily"
-    },
-    {
-      "_id": "adspc-093044894435",
-      "name": "Bottom Content Right (300x100) ",
-      "price": "11",
-      "adSize": "300x100",
-      "maxSize": "10 mb",
-      "adFormat": [
-        "jpeg",
-        "png",
-        "flash"
-      ],
-      "pricing": "Daily"
-    },
-    {
-      "_id": "adspc-0937044443115",
-      "name": "Bottom Content Right(300x100)",
-      "price": "11",
-      "adSize": "300x100",
-      "maxSize": "10 mb",
-      "adFormat": [
-        "jpeg",
-        "png",
-        "flash"
-      ],
-      "pricing": "Daily"
-    },
-    {
-      "_id": "adspc-098344443905",
-      "Name": "Scyscrapper(300x600)",
-      "price": "22",
-      "adSize": "300x300",
-      "maxSize": "10 mb",
-      "adFormat": [
-        "jpeg",
-        "png",
-        "flash"
-      ],
-      "pricing": "Daily"
-    },
-    {
-      "_id": "adspc-098900444435",
-      "Name": "Right Button 1 (300x300)",
-      "price": "22",
-      "adSize": "300x300",
-      "maxSize": "10 mb",
-      "adFormat": [
-        "jpeg",
-        "png",
-        "flash"
-      ],
-      "pricing": "Daily"
-    },
-    {
-      "_id": "adspc-098344443775",
-      "Name": "Right Button 2 (300x300)",
-      "price": "16.5",
-      "adSize": "300x300",
-      "maxSize": "10 mb",
-      "adFormat": [
-        "jpeg",
-        "png",
-        "flash"
-      ],
-      "pricing": "Daily"
-    },
-    {
-      "_id": "adspc-0909983444435",
-      "name": "Right Button 3(300x300)",
-      "price": "16.5",
-      "adSize": "300x300",
-      "maxSize": "10 mb",
-      "adFormat": [
-        "jpeg",
-        "png",
-        "flash"
-      ],
-      "pricing": "Daily"
-    }
-  ],
-  "name": "Zimpapers",
-  "nameLower": "zim papers",
-  "sku": "5",
-  "slug": "arrowgrey-slim-fit-formal-trouser",
-  "uid": "admin@codenx.com",
-  "updated": {
-    "$date": "2016-02-28T21:36:42.302Z"
-  },
-  "variants": [
-    {
-      "_id": {
-        "$oid": "56d3686a5465bb00161d8769"
-      },
-      "mrp": 10,
-      "price": 10,
-      "size": "30",
-      "weight": "6"
-    },
-    {
-      "_id": {
-        "$oid": "56d3686a5465bb00161d8769"
-      },
-      "mrp": 10,
-      "price": 10,
-      "size": "30",
-      "weight": "6"
-    }
-  ]
+    "__v" : 0
 }, function() {
         console.log('finished populating products');
     });
@@ -609,6 +639,126 @@ Product.find(function (err, data) {
 Category.find(function (err, data) {
   if(data.length < 1){
     Category.create({
+    "_id" : "560773abd4124c770bfc4b57",
+    "name" : "Men",
+    "category" : 2,
+    "parentCategory" : 0,
+    "active" : true,
+    "__v" : 0,
+    "slug" : "men"
+  },{
+      "_id" : "560773b6d4124c770bfc4b58",
+      "name" : "Women",
+      "category" : 1,
+      "parentCategory" : 0,
+      "active" : true,
+      "__v" : 0,
+      "slug" : "women"
+  },{
+      "_id" : "560773d2d4124c770bfc4b59",
+      "name" : "Dresses",
+      "category" : 100,
+      "parentCategory" : 1,
+      "active" : true,
+      "__v" : 0,
+      "slug" : "dresses"
+  },{
+      "_id" : "560774dad4124c770bfc4b68",
+      "name" : "Casual Trousers",
+      "category" : 209,
+      "parentCategory" : 2,
+      "active" : true,
+      "__v" : 0,
+      "slug" : "casual-trousers"
+  }, function() {
+        console.log('finished populating categories');
+    });
+  }
+});
+
+CategoryMP.find(function (err, data) {
+  if(data.length < 1){
+    CategoryMP.create({
+    "_id" : "560773abd4124c770bfc4b57",
+    "name" : "Men",
+    "category" : 2,
+    "parentCategory" : 0,
+    "active" : true,
+    "__v" : 0,
+    "slug" : "men"
+  },{
+      "_id" : "560773b6d4124c770bfc4b58",
+      "name" : "Women",
+      "category" : 1,
+      "parentCategory" : 0,
+      "active" : true,
+      "__v" : 0,
+      "slug" : "women"
+  },{
+      "_id" : "560773d2d4124c770bfc4b59",
+      "name" : "Dresses",
+      "category" : 100,
+      "parentCategory" : 1,
+      "active" : true,
+      "__v" : 0,
+      "slug" : "dresses"
+  },{
+      "_id" : "560774dad4124c770bfc4b68",
+      "name" : "Casual Trousers",
+      "category" : 209,
+      "parentCategory" : 2,
+      "active" : true,
+      "__v" : 0,
+      "slug" : "casual-trousers"
+  }, function() {
+        console.log('finished populating categories');
+    });
+  }
+});
+
+CategoryOI.find(function (err, data) {
+  if(data.length < 1){
+    CategoryOI.create({
+    "_id" : "560773abd4124c770bfc4b57",
+    "name" : "Men",
+    "category" : 2,
+    "parentCategory" : 0,
+    "active" : true,
+    "__v" : 0,
+    "slug" : "men"
+  },{
+      "_id" : "560773b6d4124c770bfc4b58",
+      "name" : "Women",
+      "category" : 1,
+      "parentCategory" : 0,
+      "active" : true,
+      "__v" : 0,
+      "slug" : "women"
+  },{
+      "_id" : "560773d2d4124c770bfc4b59",
+      "name" : "Dresses",
+      "category" : 100,
+      "parentCategory" : 1,
+      "active" : true,
+      "__v" : 0,
+      "slug" : "dresses"
+  },{
+      "_id" : "560774dad4124c770bfc4b68",
+      "name" : "Casual Trousers",
+      "category" : 209,
+      "parentCategory" : 2,
+      "active" : true,
+      "__v" : 0,
+      "slug" : "casual-trousers"
+  }, function() {
+        console.log('finished populating categories');
+    });
+  }
+});
+
+CategoryTNG.find(function (err, data) {
+  if(data.length < 1){
+    CategoryTNG.create({
     "_id" : "560773abd4124c770bfc4b57",
     "name" : "Men",
     "category" : 2,
@@ -674,6 +824,67 @@ Brand.find(function (err, data) {
     });
   }
 });
+
+BrandMP.find(function (err, data) {
+  if(data.length < 1){
+    BrandMP.create({
+    "_id" : "5607c58bdddfb6780c5bddf3",
+    "name" : "Estelle",
+    "info" : "Estelle",
+    "slug" : "estelle",
+    "active" : true,
+    "__v" : 0
+}, {
+    "_id" : "5607c599dddfb6780c5bddf4",
+    "name" : "FREECULTR",
+    "info" : "FREECULTR",
+    "slug" : "freecultr",
+    "active" : true,
+    "__v" : 0
+},{
+    "active" : true,
+    "__v" : 0,
+    "slug" : "alleviater",
+    "info" : "Alleviater",
+    "name" : "Alleviater",
+    "_id" : "5607c5c1dddfb6780c5bddf8"
+}, function() {
+        console.log('finished populating brands');
+    });
+  }
+});
+
+
+BrandOI.find(function (err, data) {
+  if(data.length < 1){
+    BrandOI.create({
+    "_id" : "5607c58bdddfb6780c5bddf3",
+    "name" : "Estelle",
+    "info" : "Estelle",
+    "slug" : "estelle",
+    "active" : true,
+    "__v" : 0
+}, {
+    "_id" : "5607c599dddfb6780c5bddf4",
+    "name" : "FREECULTR",
+    "info" : "FREECULTR",
+    "slug" : "freecultr",
+    "active" : true,
+    "__v" : 0
+},{
+    "active" : true,
+    "__v" : 0,
+    "slug" : "alleviater",
+    "info" : "Alleviater",
+    "name" : "Alleviater",
+    "_id" : "5607c5c1dddfb6780c5bddf8"
+}, function() {
+        console.log('finished populating brands');
+    });
+  }
+});
+
+
 
 Country.find(function (err, data) {
   if(data.length < 1){

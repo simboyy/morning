@@ -18,12 +18,10 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
-  require('../api/publisher/publisher.socket').register(socket);
   require('../api/country/country.socket').register(socket);
   require('../api/shipping/shipping.socket').register(socket);
   require('../api/coupon/coupon.socket').register(socket);
   require('../api/feature/feature.socket').register(socket);
-  require('../api/statistic/statistic.socket').register(socket);
   require('../api/PaymentMethod/PaymentMethod.socket').register(socket);
   require('../api/setting/setting.socket').register(socket);
   require('../api/dashboard/dashboard.socket').register(socket);

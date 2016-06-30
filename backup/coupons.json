@@ -1,0 +1,2 @@
+{"__v":0,"_id":{"$oid":"561cbd6fc3c4fab4009caa0e"},"active":true,"amount":100,"code":"A100","info":"$100 discount on all products above $100","minimumCartValue":500,"type":"Discount"}
+{"__v":0,"_id":{"$oid":"576d8ac39f6f6bc4158ce545"},"active":true,"amount":10,"code":"A300","minimumCartValue":8,"type":"Discount"}

@@ -1,0 +1,425 @@
+<link rel="stylesheet" href="bower_components/angular-loading/angular-loading.css"/>
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a ui-sref="main" href="">Home</a></li>
+            <li ng-repeat="b in breadcrumb.items | reverse">
+                <a href="/" ng-if="!$last">{{b.name}}</a>
+                <span ng-if="$last">{{b.name}}</span>
+            </li>
+        </ul>
+
+        
+
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-12">
+        <ng-fader></ng-fader>
+      </div>
+      <div class="col-md-0">
+      </div>
+       
+    </div>
+
+   
+
+      
+    <!-- <div class="col-md-3">
+
+     <div class="panel panel-default sidebar-menu">
+
+         <div class="panel-heading">
+             <h3 class="panel-title">Price Range <a class="btn btn-xs btn-danger pull-right" href="" ng-click="resetPriceRange();"><i class="fa fa-times-circle"></i> Reset</a></h3>
+         </div>fw
+
+         <div class="panel-body">
+
+             <form>
+                 <div class="form-group">
+                   <rzslider
+                     rz-slider-floor="priceSlider.floor"
+                     rz-slider-ceil="priceSlider.ceil"
+                     rz-slider-model="priceSlider.min"
+                     rz-slider-high="priceSlider.max"
+                     rz-slider-translate="currencyFormatting"
+                     rz-slider-on-end="filter()"></rzslider>
+
+                    $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
+                 </div>
+
+             </form>
+
+         </div>
+      </div>
+
+      <div class="panel panel-default sidebar-menu">
+
+          <div class="panel-heading">
+              <h3 class="panel-title">Brands
+                <div class="nav-search" id="nav-search">
+                        <span class="input-icon">
+                            <input placeholder="Filter Brands ..." class="nav-search-input" ng-model="filterBrand" autocomplete="off" type="text" autofocus style="width:100%">
+                            <i class="search-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                </div>
+              </h3>
+          </div>
+
+          <div class="panel-body brand-filter-panel">
+
+              <form>
+                  <div class="form-group">
+                      <div class="checkbox" ng-repeat="b in brands | filter:filterBrand">
+                          <label>
+                            <input type="checkbox" value="{{b.name}}" checklist-model="fl.brands" checklist-value="b" ng-click="filter();" />
+                            {{b.name}}<span>&nbsp;</span>
+                          </label>
+                      </div>
+                  </div>
+
+<a class="btn btn-xs btn-warning pull-right" href="" ng-repeat="b in fl.brands" ng-click="removeBrand(b);" style="margin:0 0 5px 5px;"><i class="fa fa-times-circle"></i> {{b.name}}</a>
+              </form>
+
+          </div>
+      </div>
+
+      <div class="panel panel-default sidebar-menu">
+
+          <div class="panel-heading">
+              <h3 class="panel-title">Features
+                <div class="nav-search" id="nav-search">
+                        <span class="input-icon">
+                            <input placeholder="Filter Features ..." class="nav-search-input" ng-model="filterFeature" autocomplete="off" type="text" autofocus style="width:100%">
+                            <i class="search-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                </div>
+              </h3>
+          </div>
+
+          <div class="panel-body">
+              <form>
+                  <div class="form-group">
+                    <div ng-repeat="k in features | filter:filterFeature">
+                        <h4>{{k.key}}</h4>
+                        <div class="checkbox" ng-repeat="f in k.v">
+                            <label>
+                              <input type="checkbox" value="{{f}}" checklist-model="fl.features[k.key]" checklist-value="f" ng-click="filter();" />
+                              {{f}}<span>&nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+
+                </div> -->
+
+            <div>
+
+
+
+
+
+            	<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center>Featured Products</center></h4>
+            </div>
+            <div class="col-md-3">
+                <!-- Controls -->
+                <div class="controls pull-right hidden-xs">
+                <div class="btn-group">
+                <a class="left glyphicon glyphicon-chevron-left btn btn-danger" href="#carousel-example"
+                        data-slide="prev"></a>
+
+                 <a class="right glyphicon glyphicon-chevron-right btn btn-danger" href="#carousel-example" data-slide="next"></a>
+                </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="row">
+                        <div class="col-sm-3" data-ng-repeat="product in products.items|limitTo:4">
+                            <div class="col-item" ng-click="productDetail({id:product._id, slug:product.slug})">
+                                <div class="photo" style="height:130px">
+
+                                	<p style="text-align:center"> 
+                            			 <img ng-src="/assets/products/{{product.variants[0].image}}"
+                                        err-src="/assets/images/photo.png"   margin-left="10px" style="position:relative;height:150px;width:100px">
+                                	</p>
+                                   
+                                </div>
+                                <div class="info">
+                                    <div class="row">
+                                        <div class="price col-md-6">
+                                            <h5>
+                                                {{product.name}}</h5>
+                                            <h5 >
+                                            {{product.variants[0].price|currency}}
+                                                </h5>
+                                        </div>
+                                        <div class="rating hidden-sm col-md-6">
+                                            <i   style="color:red"class=" fa fa-star"></i><i  style="color:red"class=" fa fa-star">
+                                            </i><i  style="color:red" class=" fa fa-star"></i><i  style="color:red" class="fa fa-star">
+                                            </i><i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="separator clear-left">
+                                        <p class="buttons">
+                                      <div class="btn-group">
+
+
+                                      <a ng-click="wishlist.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" ng-show="checkWishlist(product._id)" class="btn btn-default"><span class="glyphicon glyphicon-heart"></span>  Wishlist</a>
+
+                                      
+
+                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, -1)" ng-hide="checkCart(product._id)" class="btn btn-info">-</a>
+
+                                      <a ng-hide="checkCart(product._id)" class="btn btn-info">{{getQuantity(product._id);}}</a>
+
+                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, +1)" ng-hide="checkCart(product._id)" class="btn btn-info">+</a>
+                                      </div>
+                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" ng-show="checkCart(product._id)" class="btn btn-danger"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </p>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="item">
+                   <div class="row">
+                        <div class="col-sm-3" data-ng-repeat="product in products.items|limitTo:4">
+                            <div class="col-item" ng-click="productDetail({id:product._id, slug:product.slug})">
+                                <div class="photo" style="height:130px">
+
+                                	<p style="text-align:center"> 
+                            			 <img ng-src="/assets/products/{{product.variants[0].image}}"
+                                        err-src="/assets/images/photo.png"   margin-left="10px" style="position:relative;height:150px;width:100px">
+                                	</p>
+                                   
+                                </div>
+                                <div class="info">
+                                    <div class="row">
+                                        <div class="price col-md-6">
+                                            <h5>
+                                                {{product.name}}</h5>
+                                            <h5>
+                                            {{product.variants[0].price|currency}}
+                                                </h5>
+                                        </div>
+                                        <div class="rating hidden-sm col-md-6">
+                                            <i   style="color:red"class=" fa fa-star"></i><i  style="color:red"class=" fa fa-star">
+                                            </i><i  style="color:red" class=" fa fa-star"></i><i  style="color:red" class="fa fa-star">
+                                            </i><i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="separator clear-left">
+                                        <p class="buttons">
+                                      <div class="btn-group">
+
+
+                                      <a ng-click="wishlist.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" ng-show="checkWishlist(product._id)" class="btn btn-default"><span class="glyphicon glyphicon-heart"></span>  Wishlist</a>
+
+                                      
+
+                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, -1)" ng-hide="checkCart(product._id)" class="btn btn-info">-</a>
+
+                                      <a ng-hide="checkCart(product._id)" class="btn btn-info">{{getQuantity(product._id);}}</a>
+
+                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, +1)" ng-hide="checkCart(product._id)" class="btn btn-info">+</a>
+                                      </div>
+                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" ng-show="checkCart(product._id)" class="btn btn-danger"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </p>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+            <!--endstuff-->
+             <div class="row">
+             <h3 style="text-align:center">Categories</h3>
+                 <div data-ng-repeat="option in Types" class="col-md-3">
+                    <div>
+                        <a href="/Category/{{option.slug}}/{{option._id}}">
+                            <img ng-src="/assets/categories/{{option.name}}.png"
+                                err-src="/assets/images/photo.png">
+                        </a>
+
+                                <div class="text text-center">
+                                    <a href="/Category/{{option.slug}}/{{option._id}}">{{option.name}}</a>
+                                   
+                                   
+                                </div>
+
+                    </div>
+                 </div>
+             </div>
+             </div>
+
+                <div class="col-md-12">
+
+              
+                   <!--  <div class="box info-bar">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5 products-showing">
+                                Showing {{products.items.length}} products of {{products.count}} in: $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
+                            </div>
+
+                            <div class="col-sm-12 col-md-7 text-right products-number-sort">
+                                <div class="row">
+                                    <form class="form-inline">
+
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="products-number">
+                                                <strong>Sort</strong>
+                                                <div class="btn-group">
+                                                  <a href="" ng-repeat="o in sortOptions" ng-class="{active : o.val==products.sort}" class="btn btn-default btn-sm btn-primary"  ng-click="sortNow(o.val);">{{o.name}}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-8  products-number-sort">
+                                <div class="products-sort-by">
+                                  <span ng-if="fl.brands.length>0">Brands:</span>
+                                  <a class="btn btn-xs btn-warning" href="" ng-click="removeBrand(b);" ng-repeat="b in fl.brands" style="margin-left:5px;"><i class="fa fa-times-circle"></i> {{b.name}}</a>
+
+                                  <a ng-if="fl.categories.length>0" class="btn btn-xs btn-warning" href="" ng-click="removeCategory();" style="margin-left:5px;"><i class="fa fa-times-circle"></i>{{fl.categories[0].name}}</a>
+
+<span ng-repeat="features in fl.features">
+    <a ng-if="features" ng-click="removeFeatures(features);" ng-repeat="f in features" class="btn btn-xs btn-warning" href="" style="margin-left:5px;">{{f}}</a>
+</span>
+
+                                  <select ng-model="products.brand"  ng-change="navigate('Brand',products.brand);" ng-options="b.name for b in brands track by b._id" class="pull-right">
+                                      <option value="">All Brands</option>
+                                  </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                <div infinite-scroll='scroll()' infinite-scroll-disabled='products.busy' infinite-scroll-distance='1'>
+                    <div class="row products" dw-loading="products" dw-loading-options="{text: ''}">
+                      <div class="box" ng-if="products.items.length==0 && !products.busy">
+                          <div class="row">
+                              <div class="col-sm-12">
+                                <h3>No product found. Try removing some filters.</h3>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- <div class="col-md-3 col-sm-6" ng-repeat="product in products.items">
+                            <div class="product" style="width:178px;height:300px;margin-top:10px">
+                                
+                                <div>
+                                    <a ui-sref="productDetail({id:product._id, slug:product.slug})">
+                                        <img ng-src="/assets/products/{{product.variants[0].image}}"
+                                            err-src="/assets/images/photo.png" class="img-responsive">
+                                    </a>
+                                </div> -->
+                        
+                                <!-- <div class="text text-center">
+                                    <a ui-sref="productDetail({id:product._id, slug:product.slug})">
+                                    {{product.variants[0].price|currency}}<br/>{{product.name}}{{product.variants[0].size}}</a>
+                                    <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '$'}}</del> {{product.variants[0].price | currency : '$'}}</p>
+                                    <p class="buttons">
+                                      <div class="btn-group">
+                                      <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default">View detail</a>
+                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, -1)" ng-hide="checkCart(product._id)" class="btn btn-info">-</a>
+
+                                      <a ng-hide="checkCart(product._id)" class="btn btn-info">{{getQuantity(product._id);}}</a>
+
+                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, +1)" ng-hide="checkCart(product._id)" class="btn btn-info">+</a>
+                                      </div>
+                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" ng-show="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </p>
+                                </div> -->
+                                <!-- /.text -->
+                            <!-- </div> -->
+                            <!-- /.product -->
+                        <!-- </div> -->
+
+                        <!-- /.col-md-4 -->
+                    </div>
+                    <!-- /.products -->
+
+                </div>
+                <!-- /.col-md-9 -->
+              
+
+
+
+<div class="col-md-12 text-center"><h3>Featured Brands<br></h3></div>
+<div class="col-md-10 col-md-offset-1">
+<div class="carouse2 slide" data-ride="carouse2" data-type="multi" data-interval="3000" id="myCarouse2">
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/assets/featured/lobels.png"  class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/assets/featured/cairns.png"  class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/assets/featured/johnniewalker.png"  class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/assets/featured/lobels.png" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/assets/featured/colcom.png" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/assets/featured/nestle.png" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/assets/featured/delta.png" class="img-responsive"></a></div>
+    </div>
+    
+  </div>
+  </div>
+</div>
+
+         </div>
+</div> <!-- /just to enable infinite scroll -->
+
+<script>
+  $('.carouse2[data-type="multi"] .item').each(function(){
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+
+  for (var i=0;i<4;i++) {
+    next=next.next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+    
+    next.children(':first-child').clone().appendTo($(this));
+  }
+});
+</script>
+
+

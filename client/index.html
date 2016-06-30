@@ -7,63 +7,115 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
-    <title>MediaBox</title>
-    <meta name="description" content="">
+    <title></title>
+    
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
-      <link rel="stylesheet" href="bower_components/angular-simple-chat/dist/angular-simple-chat.css">
       <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css" />
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
       <link rel="stylesheet" href="bower_components/ui-select/dist/select.css" />
-      <link rel="stylesheet" href="bower_components/angular-bootstrap-simple-chat/src/css/style.css">
-      <link rel="stylesheet" href="bower_components/angular-bootstrap-simple-chat/src/css/themes.css">
-      <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-      <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.css">
+      <link rel="stylesheet" href="bower_components/angular-bootstrap-simple-chat/src/css/style.css" />
+      <link rel="stylesheet" href="bower_components/angular-simple-chat/dist/angular-simple-chat.min.css" />
+      <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+      <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
+      <link rel="stylesheet" href="app/CSS/ngFader.min.css">
       <link rel="stylesheet" href="app/account/login/login.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
-      <link rel="stylesheet" href="app/select2.css">
-      <link rel="stylesheet" href="app/selectize.default.css">
       <link rel="stylesheet" href="app/brand/brand.css">
+      <link rel="stylesheet" href="app/brandMP/brandmp.css">
+      <link rel="stylesheet" href="app/brandOI/brandoi.css">
+      <link rel="stylesheet" href="app/brandTNG/brandtng.css">
       <link rel="stylesheet" href="app/category/category.css">
+      <link rel="stylesheet" href="app/categoryMP/categorymp.css">
+      <link rel="stylesheet" href="app/categoryOI/categoryoi.css">
+      <link rel="stylesheet" href="app/categoryTNG/categorytng.css">
       <link rel="stylesheet" href="app/checkout/checkout.css">
       <link rel="stylesheet" href="app/contact/contact.css">
       <link rel="stylesheet" href="app/country/country.css">
       <link rel="stylesheet" href="app/coupon/coupon.css">
+      <link rel="stylesheet" href="app/couponMP/couponmp.css">
+      <link rel="stylesheet" href="app/couponOI/couponoi.css">
+      <link rel="stylesheet" href="app/couponTNG/coupontng.css">
       <link rel="stylesheet" href="app/customer/customer.css">
       <link rel="stylesheet" href="app/dashboard/dashboard.css">
       <link rel="stylesheet" href="app/directive/modal.css">
       <link rel="stylesheet" href="app/documentation/documentation.css">
       <link rel="stylesheet" href="app/feature/feature.css">
+      <link rel="stylesheet" href="app/featureMP/featuremp.css">
+      <link rel="stylesheet" href="app/featureOI/featureoi.css">
+      <link rel="stylesheet" href="app/featureTNG/featuretng.css">
       <link rel="stylesheet" href="app/inventory/inventory.css">
       <link rel="stylesheet" href="app/invoice/invoice.css">
       <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/ngFader.css">
       <link rel="stylesheet" href="app/order/order.css">
-       <link rel="stylesheet" href="app/puborder/puborder.css">
-      <link rel="stylesheet" href="app/media/media.css">
-      <link rel="stylesheet" href="app/campaign/campaign.css">
+      <link rel="stylesheet" href="app/orderMP/ordermp.css">
+      <link rel="stylesheet" href="app/orderOI/orderoi.css">
+      <link rel="stylesheet" href="app/orderTNG/ordertng.css">
       <link rel="stylesheet" href="app/paymentMethod/paymentMethod.css">
       <link rel="stylesheet" href="app/product/product.css">
-       <link rel="stylesheet" href="app/profile/profile.css">
+      <link rel="stylesheet" href="app/productMP/productmp.css">
+      <link rel="stylesheet" href="app/productOI/productoi.css">
+      <link rel="stylesheet" href="app/productTNG/producttng.css">
       <link rel="stylesheet" href="app/shipping/shipping.css">
       <link rel="stylesheet" href="app/shop/shop.css">
+      <link rel="stylesheet" href="app/sweetalert.css">
       <link rel="stylesheet" href="app/theme.css">
       <link rel="stylesheet" href="components/navbar/megamenu.css">
       <!-- endinjector -->
     <!-- endbuild -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
+    <style>
+.scroll-top-wrapper {
+    position: fixed;
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+	text-align: center;
+	z-index: 99999999;
+    background-color: #777777;
+	color: #eeeeee;
+	width: 50px;
+	height: 48px;
+	line-height: 48px;
+	right: 30px;
+	bottom: 30px;
+	padding-top: 2px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.scroll-top-wrapper:hover {
+	background-color: #888888;
+}
+.scroll-top-wrapper.show {
+    visibility:visible;
+    cursor:pointer;
+	opacity: 1.0;
+}
+.scroll-top-wrapper i.fa {
+	line-height: inherit;
+}
+ 
+</style>
   </head>
-  <body >
-  <div ng-app="shopnxApp">
+  <body ng-app="shopnxApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -71,36 +123,148 @@
     <!-- Add your site or application content here -->
 
     <div ng-include="'components/navbar/navbar.html'"></div>
-    <div id="all">
 
-      <div id="content" style="height: inherit;background-color: #f0f0f0">
-          <div class="container" style="height: inherit;background-color: #f0f0f0">
+      <div id="content">
+      <div class="container">
 
-    <ui-view></ui-view>
+    <div ui-view=""></div>
   </div>
   <!-- /.container -->
 </div>
 <!-- /#content -->
 
+            <!-- *** FOOTER ***
+     _________________________________________________________ -->
+      
+                 <div id="footer" data-animate="fadeInUp">
+                <div class="container">
+                        <div class="col-md-3 col-sm-6">
+                            <h4>Aardath Services</h4>
+
+                            <ul>
+                                <li><a href="/">Aardath Clothing</a>
+                                </li>
+                                <li><a href="/">Aardath Stationety</a>
+                                </li>
+                                <li><a href="/">Aardath Ticketing</a>
+                                </li>
+                                <li><a href="/contact">Dial a Tech</a>
+                                </li>
+                                 <li><a href="/contact">Courier Services</a>
+                                </li>
+                            </ul>
+
+                            <hr>
+
+                            <h4>User section</h4>
+
+                            <ul>
+                                <li><a href="/login">Login</a>
+                                </li>
+                                <li><a href="/signup">Sign Up</a>
+                                </li>
+                            </ul>
+
+                            <hr class="hidden-md hidden-lg hidden-sm">
+
+                        </div>
+                        <!-- /.col-md-3 -->
+
+                        <div class="col-md-3 col-sm-6">
+
+                            <h4>Get to know us </h4>
+
+                            
+
+                            <ul>
+                                <li><a href="/">About Aardath</a>
+                                </li>
+                                <li><a href="/">Corporate</a>
+                                </li>
+                                <li><a href="/">Suppliers</a>
+                                </li>
+                            </ul>
+
+                            
+
+                            <hr class="hidden-md hidden-lg">
+
+                        </div>
+                        <!-- /.col-md-3 -->
+
+                        <div class="col-md-3 col-sm-6">
+
+                            <h4>Aardath.com</h4>
+                            <ul>
+                              <li><a href="/">Terms of Use</a>
+                                </li>
+                                <li><a href="/">About our Ads</a>
+                                </li>
+                                
+                                <li><a href="/">Privacy & Security</a>
+                                </li>
+                            </ul>
+
+                            
+
+                            <hr class="hidden-md hidden-lg">
+
+                        </div>
+                        <!-- /.col-md-3 -->
 
 
 
+                        <div class="col-md-3 col-sm-6">
+
+                            <h4>Customer Service</h4>
+                             <ul>
+                              <li><a href="/">Return Policy</a>
+                                </li>
+                                <li><a href="/">Product Recalls</a>
+                                </li>
+                                
+                                <li><a href="/">Internations Customers</a>
+                                </li>
+                                <li><a href="/contact">Contact Us</a>
+                                </li>
+                                
+                                <li><a href="/">Feedback</a>
+                                </li>
+                            </ul>
+                            
+                            <hr>
+
+                            <h4>Stay in touch</h4>
+
+                            <p class="social">
+                                <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
+                                <a href="#/" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
+                            </p>
 
 
-            <!-- *** COPYRIGHT ***
+                        </div>
+                        <!-- /.col-md-3 -->
+
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /#footer -->
+
+            <!-- *** FOOTER END *** -->
      _________________________________________________________ -->
             <div id="copyright">
                 <div class="container">
                     <div class="col-md-6">
-                        <p class="pull-left">© 2016 MediaBox &nbsp;&nbsp; <a href="http://uztech.co.zw">Uztech</a> Team. </p>
+                        <p class="pull-left">© 2016 Aadarth </p>
                     </div>
                     <div class="col-md-6">
-                        
+                       
                     </div>
                 </div>
             </div>
-        </div>
-
         </div>
         <!-- /#all -->
         <!--Stripe payment -->
@@ -126,6 +290,9 @@
 
     </script>
 
+    
+    
+
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -143,32 +310,31 @@
       <script src="bower_components/angular-moment/angular-moment.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-bootstrap-simple-chat/src/scripts/index.js"></script>
-      <script src="bower_components/angular-bootstrap-simple-chat/src/scripts/templates.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-tablesort/js/angular-tablesort.js"></script>
       <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
       <script src="bower_components/checklist-model/checklist-model.js"></script>
-      <script src="bower_components/json3/lib/json3.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
       <script src="bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
-      <script src="bower_components/angular-base64-upload/src/angular-base64-upload.js"></script>
       <script src="bower_components/ui-select/dist/select.js"></script>
       <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+      <script src="bower_components/angular-bootstrap-simple-chat/src/scripts/index.js"></script>
       <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
       <script src="bower_components/angular-scroll-glue/src/scrollglue.js"></script>
-      <script src="bower_components/angular-simple-chat/dist/angular-simple-chat.js"></script>
-      <script src="/bower_components/angular-aria/angular-aria.js"></script>
-      <script src="/bower_components/angular-animate/angular-animate.js"></script>
-      <script src="/bower_components/angular-material/angular-material.js"></script>
-      <script src="/bower_components/ng-table/dist/ng-table.js"></script>
-      <script src="/bower_components/angular-smart-table/dist/smart-table.js"></script>
-      <script src="/bower_components/angular-filter/dist/angular-filter.min.js"></script>
-
-      
+      <script src="bower_components/angular-simple-chat/dist/angular-simple-chat.min.js"></script>
+      <script src="bower_components/angular-aria/angular-aria.js"></script>
+      <script src="bower_components/angular-messages/angular-messages.js"></script>
+      <script src="bower_components/angular-material/angular-material.js"></script>
+      <script src="bower_components/angular-random-string/src/angular-random-string.js"></script>
+      <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+      <script src="bower_components/angular-base64-upload/src/angular-base64-upload.js"></script>
+      <script src="bower_components/ng-table/dist/ng-table.min.js"></script>
+      <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+      <script src="bower_components/angular-touch/angular-touch.js"></script>
+      <script src="bower_components/ng-password-strength/dist/scripts/ng-password-strength.js"></script>
       <!-- endbower -->
       <script src="/components/navbar/bootstrap.min.js"></script>
       <script src="socket.io-client/socket.io.js"></script>
@@ -189,10 +355,22 @@
           <script src="app/admin/admin.js"></script>
           <script src="app/brand/brand.controller.js"></script>
           <script src="app/brand/brand.js"></script>
+          <script src="app/brandMP/brandmp.controller.js"></script>
+          <script src="app/brandMP/brandmp.js"></script>
+          <script src="app/brandOI/brandoi.controller.js"></script>
+          <script src="app/brandOI/brandoi.js"></script>
+          <script src="app/brandTNG/brandtng.controller.js"></script>
+          <script src="app/brandTNG/brandtng.js"></script>
           <script src="app/cart/cart.controller.js"></script>
           <script src="app/cart/cart.js"></script>
           <script src="app/category/category.controller.js"></script>
           <script src="app/category/category.js"></script>
+          <script src="app/categoryMP/categorymp.controller.js"></script>
+          <script src="app/categoryMP/categorymp.js"></script>
+          <script src="app/categoryOI/categoryoi.controller.js"></script>
+          <script src="app/categoryOI/categoryoi.js"></script>
+          <script src="app/categoryTNG/categorytng.controller.js"></script>
+          <script src="app/categoryTNG/categorytng.js"></script>
           <script src="app/checkout/checkout.controller.js"></script>
           <script src="app/checkout/checkout.js"></script>
           <script src="app/contact/contact.controller.js"></script>
@@ -201,6 +379,12 @@
           <script src="app/country/country.js"></script>
           <script src="app/coupon/coupon.controller.js"></script>
           <script src="app/coupon/coupon.js"></script>
+          <script src="app/couponMP/couponmp.controller.js"></script>
+          <script src="app/couponMP/couponmp.js"></script>
+          <script src="app/couponOI/couponoi.controller.js"></script>
+          <script src="app/couponOI/couponoi.js"></script>
+          <script src="app/couponTNG/coupontng.controller.js"></script>
+          <script src="app/couponTNG/coupontng.js"></script>
           <script src="app/customer/customer.controller.js"></script>
           <script src="app/customer/customer.js"></script>
           <script src="app/dashboard/dashboard.controller.js"></script>
@@ -209,9 +393,16 @@
           <script src="app/documentation/documentation.controller.js"></script>
           <script src="app/documentation/documentation.js"></script>
           <script src="app/factory/Cart/Cart.service.js"></script>
+          <script src="app/factory/Wishlist/Wishlist.service.js"></script>
           <script src="app/factory/factory.service.js"></script>
           <script src="app/feature/feature.controller.js"></script>
           <script src="app/feature/feature.js"></script>
+          <script src="app/featureMP/featuremp.controller.js"></script>
+          <script src="app/featureMP/featuremp.js"></script>
+          <script src="app/featureOI/featureoi.controller.js"></script>
+          <script src="app/featureOI/featureoi.js"></script>
+          <script src="app/featureTNG/featuretng.controller.js"></script>
+          <script src="app/featureTNG/featuretng.js"></script>
           <script src="app/filter/filter.filter.js"></script>
           <script src="app/inventory/inventory.controller.js"></script>
           <script src="app/inventory/inventory.js"></script>
@@ -219,31 +410,40 @@
           <script src="app/invoice/invoice.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/ngFader.js"></script>
+          <script src="app/ngFaderMP.js"></script>
+          <script src="app/ngFaderOI.js"></script>
           <script src="app/order/order.controller.js"></script>
           <script src="app/order/order.js"></script>
-           <script src="app/puborder/puborder.controller.js"></script>
-          <script src="app/puborder/puborder.js"></script>
-           <script src="app/media/media.controller.js"></script>
-          <script src="app/media/media.js"></script>
-          <script src="app/campaign/campaign.controller.js"></script>
-          <script src="app/campaign/campaign.js"></script>
+          <script src="app/orderMP/ordermp.controller.js"></script>
+          <script src="app/orderMP/ordermp.js"></script>
+          <script src="app/orderOI/orderoi.controller.js"></script>
+          <script src="app/orderOI/orderoi.js"></script>
+          <script src="app/orderTNG/ordertng.controller.js"></script>
+          <script src="app/orderTNG/ordertng.js"></script>
           <script src="app/paymentMethod/paymentMethod.controller.js"></script>
           <script src="app/paymentMethod/paymentMethod.js"></script>
           <script src="app/product/product.controller.js"></script>
           <script src="app/product/product.js"></script>
-          <script src="app/profile/profile.controller.js"></script>
-          <script src="app/profile/profile.js"></script>
+          <script src="app/productMP/productmp.controller.js"></script>
+          <script src="app/productMP/productmp.js"></script>
+          <script src="app/productOI/productoi.controller.js"></script>
+          <script src="app/productOI/productoi.js"></script>
+          <script src="app/productTNG/producttng.controller.js"></script>
+          <script src="app/productTNG/producttng.js"></script>
           <script src="app/settings.js"></script>
           <script src="app/shipping/shipping.controller.js"></script>
           <script src="app/shipping/shipping.js"></script>
           <script src="app/shop/shop.controller.js"></script>
           <script src="app/shop/shop.js"></script>
-          <script src="app/factory/Cart/Cart.service.js"></script>
+          <script src="app/sweetalert.min.js"></script>
+          <script src="app/wishlist/wishlist.controller.js"></script>
+          <script src="app/wishlist/wishlist.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
-         
+          <script src="components/navbar/bootstrap.min.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>
           <script src="components/socket/socket.service.js"></script>
           <!-- endinjector -->

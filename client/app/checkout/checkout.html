@@ -13,15 +13,15 @@
         <ul class="nav nav-pills nav-justified">
             <li class="active disabled"><a href="#"><i class="fa fa-map-marker"></i><br>Address</a>
             </li>
-            <!-- <li class="active disabled"><a href="#"><i class="fa fa-truck"></i><br>Delivery Method</a>
-            </li> -->
+            <li class="active disabled"><a href="#"><i class="fa fa-truck"></i><br>Delivery Method</a>
+            </li>
             <li class="active disabled"><a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
             </li>
             <li class="active disabled"><a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
             </li>
         </ul>
       <div class="panel-heading">
-            <!-- <h3 class="panel-title">Enter A details</h3> -->
+            <h3 class="panel-title">Enter shipping details</h3>
       </div>
       <div class="panel-body">
           <div class="form-group">
@@ -67,6 +67,19 @@
                   </span>
               </div>
           </div>
+
+          <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right"> Surburb </label>
+              <div class="col-sm-7">
+                 <span class="block input-icon input-icon-right">
+                      <select name="surburb" ng-model="customer.suburb" class="form-control" required="" ng-options="option.name for option in suburbs | orderBy:'name'" ng-change="calculateShipping(customer.suburb);" class="form-control">
+                      </select>
+
+  <small class="errorMessage"
+       ng-show="checkout_form.surburb.$dirty && checkout_form.surburb.$invalid"> Please select your surburb.</small>
+                  </span>
+              </div>
+          </div>
           <div class="form-group">
               <label class="col-sm-3 control-label no-padding-right"> State </label>
               <div class="col-sm-7">
@@ -81,7 +94,7 @@
               <label class="col-sm-3 control-label no-padding-right"> Zip </label>
               <div class="col-sm-7">
                  <span class="block input-icon input-icon-right">
-                      <input type="text" name="zip" ng-model="customer.zip" class="form-control" placeholder="zip code " tabindex="6"/>
+                      <input type="text" name="zip" ng-model="customer.zip" class="form-control" placeholder="zip code for delivery" tabindex="6"/>
   <small class="errorMessage"
        ng-show="checkout_form.zip.$dirty && checkout_form.zip.$invalid"> Please select your state.</small>
                   </span>
@@ -91,13 +104,13 @@
               <label class="col-sm-3 control-label no-padding-right"> Country </label>
               <div class="col-sm-7">
                  <span class="block input-icon input-icon-right">
-                      <select name="country" ng-model="customer.country" class="form-control" required="" ng-options="option.name for option in countries | orderBy:'name' "class="form-control">
+                      <select name="country" ng-model="customer.country" class="form-control" required="" ng-options="option.name for option in countries | orderBy:'name' track by option.code"  class="form-control">
                       </select>
 
                       <!-- <div ng-if="!shipping._id">Sorry... We do not ship to this Country.</div> -->
   <small class="errorMessage"
        ng-show="checkout_form.country.$dirty && checkout_form.country.$invalid"> Please select your country.</small>
-       <!-- <small>The system automatically choose the best shipping method available for your country</small> -->
+       
                   </span>
               </div>
           </div>
@@ -113,7 +126,7 @@
               </div>
           </div>
 
-         <!--  <div class="form-group">
+          <div class="form-group">
               <label class="col-sm-3 control-label no-padding-right"> Coupon </label>
               <div class="col-sm-7">
                  <span class="block input-icon input-icon-right">
@@ -123,14 +136,14 @@
        ng-show="checkout_form.coupon.$dirty && checkout_form.coupon.$invalid"> Discount coupon was expired.</small>
                   </span>
               </div>
-          </div> -->
+          </div>
             </div>
             <div class="box-footer">
                 <div class="pull-left">
-                    <a href="/" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to Media</a>
+                    <a href="/" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to basket</a>
                 </div>
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-primary" ng-click="placeOrder(cart.items,cart.getTotalPrice());cart.checkout({paymentMethod:customer.paymentMethod, options: cart.getTotalPrice()},true);cart.clearItems();" ng-disabled="checkout_form.$invalid" tabindex="6">Make Payment<i class="fa fa-chevron-right"></i>
+                    <button type="submit" class="btn btn-primary" ng-click="placeOrder(cart.items,cart.getTotalPriceAfterShipping(shipping , coupon.amount));cart.checkout({paymentMethod:customer.paymentMethod, options: cart.getTotalPriceAfterShipping(shipping , coupon.amount)},true);cart.clearItems();" ng-disabled="checkout_form.$invalid" tabindex="6">Make Payment<i class="fa fa-chevron-right"></i>
                     </button>
                 </div>
             </div>
@@ -144,52 +157,56 @@
 
 <div class="col-md-5">
 
-    <div class="box" id="order-summary" ng-if="cart.getTotalCount()>0">
+    <div class="box" id="order-summary" style="height:320px" ng-if="cart.getTotalCount()>0">
         <div class="box-header">
             <h3>Order summary</h3>
         </div>
-       <!--  <p class="text-muted">Shipping and additional costs are calculated based on the total weight and selected country.</p>
- -->
+       
         <div class="table-responsive">
             <table class="table">
                 <tbody>
-                    <!-- <tr>
+                    <tr>
                         <td>Order subtotal</td>
                         <th>{{cart.getTotalPrice() | currency}}</th>
-                    </tr> -->
+                    </tr>
 
-                    <!-- <tr ng-if="shipping">
+                    <tr ng-if="shipping">
                         <td>Shipping and handling</td>
                         <td ng-if="cart.getTotalPriceAfterShipping(shipping , coupon.amount).charge==0">
                             Free Shipping {{cart.getTotalPriceAfterShipping(shipping , coupon.amount).carrier}}
                         </td>
                         <td ng-if="cart.getTotalPriceAfterShipping(shipping , coupon.amount).charge>0">
                             {{cart.getTotalPriceAfterShipping(shipping , coupon.amount).charge | currency}} {{cart.getTotalPriceAfterShipping(shipping , coupon.amount).carrier}} <br/>
-                            <small><i><a href="/">Shop</a> {{cart.getTotalPriceAfterShipping(shipping , coupon.amount).more | currency}} more for free shipping</i></small>
+                           
                         </td>
-                    </tr> -->
-                    <tr >
+                    </tr>
+                    <tr ng-if="cart.getTotalPriceAfterShipping(shipping , coupon.amount).couponAmount">
                         <td>Coupon Discount</td>
-                        <td><small>$ 0.00</small></td>
+                        <td><small>{{cart.getTotalPriceAfterShipping(shipping , coupon.amount).couponAmount | currency}}</small></td>
                     </tr>
 
-                    <tr >
+                    <tr class="total">
                         <td>Total</td>
                         <th>
-                            {{cart.getTotalPrice() | currency}}
+                            {{cart.getTotalPriceAfterShipping(shipping , coupon.amount).total  | currency}}
                         </th>
                         <!-- <th ng-if="cart.getTotalPrice() < shipping.minOrderValue">
                             {{cart.getTotalPriceAfterShipping(shipping , coupon.amount) | currency}}
                         </th> -->
                     </tr>
+                    <tr>
+                    </tr>
                 </tbody>
             </table>
+            
         </div>
 
+          <div class="pull-right">
+                    <button type="submit" class="btn btn-primary" ng-click="placeOrder(cart.items,cart.getTotalPriceAfterShipping(shipping , coupon.amount));cart.checkout({paymentMethod:customer.paymentMethod, options: cart.getTotalPriceAfterShipping(shipping , coupon.amount)},true);cart.clearItems();" ng-disabled="checkout_form.$invalid" tabindex="6">Make Payment<i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
 
     </div>
-    
-     <img  data-ng-src="assets/images/paypal_badge.jpg" data-err-src="images/png/avatar.png"/>
 
 </div>
 <!-- /.col-md-3 -->

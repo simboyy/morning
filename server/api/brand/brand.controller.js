@@ -14,6 +14,19 @@ exports.index = function(req, res) {
   // },1000);
 };
 
+
+//get list of brands by category
+
+// Get list of parents
+exports.category = function(req, res) {
+  // console.log(req.params.id);
+  Brand.find({'category' : parseInt(req.params.id)},function (err, brands) {
+    if(err) { return handleError(res, err); }
+    return res.status(200).json(brands);
+  });
+};
+
+
 // Get a single brand
 exports.show = function(req, res) {
   Brand.findById(req.params.id, function (err, brand) {

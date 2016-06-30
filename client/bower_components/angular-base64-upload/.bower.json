@@ -131,8 +131,7 @@
     "tag": "v0.1.19",
     "commit": "c15e49df03654870fd8fb9f51115056935034c14"
   },
-  "_source": "git://github.com/adonespitogo/angular-base64-upload.git",
+  "_source": "https://github.com/adonespitogo/angular-base64-upload.git",
   "_target": "~0.1.19",
-  "_originalSource": "angular-base64-upload",
-  "_direct": true
+  "_originalSource": "angular-base64-upload"
 }

@@ -2,7 +2,7 @@
 
 angular.module('shopnxApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
-    $scope.user = {};
+    $scope.user = {email:'admin@codenx.com', password: 'codenx'};
     $scope.errors = {};
 
     $scope.login = function(form) {
@@ -13,9 +13,7 @@ angular.module('shopnxApp')
           email: $scope.user.email,
           password: $scope.user.password
         })
-        .then( function(user) {
-
-          console.log(user);
+        .then( function() {
           // Logged in, redirect to the page with requested a login
           Auth.redirectToAttemptedUrl();
         })

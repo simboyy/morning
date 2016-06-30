@@ -26,11 +26,7 @@ exports.index = function(req, res) {
 exports.create = function (req, res, next) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
-
-  console.log(req.body);
-
-  if(req.body.role){newUser.role = 'admin';} else {newUser.role = 'user'}
-
+  newUser.role = 'user';
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
     var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
@@ -41,29 +37,6 @@ exports.create = function (req, res, next) {
 /**
  * Get a single user
  */
-
- // Updates an existing campaign in the DB.
-exports.update = function(req, res) {
-  console.log(req.body);
-
-  // req.body.uid = req.user.email; // id change on every login hence email is used
-  req.body.updated = Date.now();
-  User.findById(req.params.id, function (err, user) {
-    if (err) { return handleError(res, err); }
-    if(!user) { return res.status(404).send('Not Found'); }
-    
-     user.name = req.body.name;
-     user.email = req.body.email;
-     user.company = req.body.company;
-     user.phone = req.body.phone;
-      user.save(function(err) {
-        if (err) return validationError(res, err);
-        res.status(200).send('OK');
-      });
-
-  });
-};
-
 exports.show = function (req, res, next) {
   var userId = req.params.id;
 

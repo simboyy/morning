@@ -11,8 +11,10 @@ var BrandSchema = new Schema({
   image: String,
   uid: String,
   brand: Number,
+  category:Number,
   active: { type: Boolean, default: true },
   updated: {type: Date, default: Date.now}
+
 });
 
 module.exports = mongoose.model('Brand', BrandSchema);

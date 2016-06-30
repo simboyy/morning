@@ -1,0 +1,39 @@
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c brandmps -u simba -p 1994kingsss --file brandmps.json
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c brandois -u simba -p 1994kingsss --file brandois.json
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c brands -u simba -p 1994kingsss --file brands.json
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c brandtngs -u simba -p 1994kingsss --file brandtngs.json
+
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c categories -u simba -p 1994kingsss --file categories.json
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c categorymps -u simba -p 1994kingsss --file categorymps.json
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c categoryois -u simba -p 1994kingsss --file categoryois.json
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c categorytngs -u simba -p 1994kingsss --file categorytngs.json
+
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c products -u simba -p 1994kingsss --file products.json
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c productmps -u simba -p 1994kingsss --file productmps.json
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c productois -u simba -p 1994kingsss --file productois.json
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c producttngs -u simba -p 1994kingsss --file producttngs.json
+
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c users -u simba -p 1994kingsss --file users.json
+
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c suburbs -u simba -p 1994kingsss --file suburbs.json
+
+
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c shippings -u simba -p 1994kingsss --file shippings.json
+
+
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c settings -u simba -p 1994kingsss --file settings.json
+
+
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c orders -u simba -p 1994kingsss --file orders.json
+
+
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c coupons -u simba -p 1994kingsss --file coupons.json
+
+mongoimport -h ds023428.mlab.com:23428 -d heroku_44cvf56x -c countries -u simba -p 1994kingsss --file countries.json
+
+
+
+
+
+
+

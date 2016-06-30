@@ -40,8 +40,7 @@
     "tag": "v0.4.0",
     "commit": "457e6ca0fd52466b837298d6be1f82b479a5b873"
   },
-  "_source": "git://github.com/irontec/angular-bootstrap-simple-chat.git",
+  "_source": "https://github.com/irontec/angular-bootstrap-simple-chat.git",
   "_target": "~0.4.0",
-  "_originalSource": "angular-bootstrap-simple-chat",
-  "_direct": true
+  "_originalSource": "angular-bootstrap-simple-chat"
 }

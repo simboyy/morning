@@ -9,11 +9,11 @@ angular.module('shopnxApp')
     $scope.data = angular.copy(data);
     $scope.options = options;
     $scope.saveItem = function(item){
-      // if(Settings.demo){
-      //   toastr.error('Will not be able to create in demo mode');
-      //   $modalInstance.close();
-      //   return;
-      // }
+      if(Settings.demo){
+        toastr.error('Will not be able to create in demo mode');
+        $modalInstance.close();
+        return;
+      }
         if($scope.data._id){
           api.update({ id:$scope.data._id }, $scope.data).$promise.then(function() {
 
@@ -61,6 +61,7 @@ angular.module('shopnxApp')
       var modalOptions = {
           templateUrl: 'components/modal/modal.html',
           controller: selectModalInstanceCtrl,
+          size:"md",
           controllerAs: 'modal',
           windowClass: 'modal-danger',
           resolve: {

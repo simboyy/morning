@@ -26,7 +26,7 @@ exports.count = function(req, res) {
 // Get list of products
 exports.index = function(req, res) {
   if(req.query){
-    console.log(req.query,req.query.skip,req.query.limit,req.query.sort);
+    // console.log(req.query,req.query.skip,req.query.limit,req.query.sort);
     var q = isJson(req.query.where);
     // console.log(q);
     var sort = isJson(req.query.sort);
@@ -75,9 +75,6 @@ exports.create = function(req, res) {
 
 // Updates an existing product in the DB.
 exports.update = function(req, res) {
-
-  //console.log(req.body);
-
   if(req.body._id) { delete req.body._id; }
   req.body.uid = req.user.email; // id change on every login hence email is used
   req.body.updated = Date.now();
@@ -90,9 +87,9 @@ exports.update = function(req, res) {
                       .replace(/\-\-+/g, '-')      // Replace multiple - with single -
                       .replace(/^-+/, '')          // Trim - from start of text
                       .replace(/-+$/, '');
-
+  // var obj = JSON.parse(req.body.variants);
+  // console.log('EDit', obj);
   Product.findById(req.params.id, function (err, product) {
-    
     if (err) { return handleError(res, err); }
     if(!product) { return res.status(404).send('Not Found'); }
     product.variants = req.body.variants;

@@ -1,5 +1,5 @@
 /*
- angular-tablesort v1.1.2
+ angular-tablesort v1.1.1
  (c) 2013-2015 Mattias Holmlund, http://mattiash.github.io/angular-tablesort
  License: MIT
 */
@@ -164,7 +164,7 @@ tableSortModule.directive("tsRepeat", ['$compile', function($compile) {
             var repeatAttrs = ["ng-repeat", "data-ng-repeat", "ng-repeat-start", "data-ng-repeat-start"];
             var ngRepeatDirective = repeatAttrs[0];
             var tsRepeatDirective = "ts-repeat";
-            for (var i = 0; i < repeatAttrs.length; i++) {
+            for (i = 0; i < repeatAttrs.length; i++) {
                  if (angular.isDefined(element.attr(repeatAttrs[i]))) {
                     ngRepeatDirective = repeatAttrs[i];
                     tsRepeatDirective = ngRepeatDirective.replace(/^(data-)?ng/, '$1ts');

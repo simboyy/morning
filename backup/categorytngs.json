@@ -1,0 +1,4 @@
+{"__v":0,"_id":{"$oid":"560773abd4124c770bfc4b57"},"active":true,"category":2,"name":"Men","parentCategory":0,"slug":"men","sub_categories":[],"updated":{"$date":"2016-06-26T08:55:27.779Z"}}
+{"__v":0,"_id":{"$oid":"560773b6d4124c770bfc4b58"},"active":true,"category":1,"name":"Women","parentCategory":0,"slug":"women","sub_categories":[],"updated":{"$date":"2016-06-26T08:55:27.781Z"}}
+{"__v":0,"_id":{"$oid":"560773d2d4124c770bfc4b59"},"active":true,"category":100,"name":"Dresses","parentCategory":1,"slug":"dresses","sub_categories":[],"updated":{"$date":"2016-06-26T08:55:27.783Z"}}
+{"__v":0,"_id":{"$oid":"560774dad4124c770bfc4b68"},"active":true,"category":209,"name":"Casual Trousers","parentCategory":2,"slug":"casual-trousers","sub_categories":[],"updated":{"$date":"2016-06-26T08:55:27.784Z"}}

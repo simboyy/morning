@@ -5,8 +5,6 @@ var mongoose = require('mongoose'),
 
 var OrderSchema = new Schema({
   orderNo: String,
-  campaignName:String,
-  campaignObjective:String,
   name: String,
   slug: String,
   info: String,
@@ -24,7 +22,7 @@ var OrderSchema = new Schema({
   updated: {type: Date},
   orderDate: {type: Date, default: Date.now},
   status: Object({ name: String, val: Number}),
-  items: [{ sku: String, name: String, size: String, quantity: String, mrp: String, price: String, image: String, category: String,publisher:String ,uid:String,status: Object({ name: String, val: Number})}]
+  items: [{ sku: String, name: String, size: String, quantity: String, mrp: String, price: String, image: String, category: String }]
 });
 
 module.exports = mongoose.model('Order', OrderSchema);

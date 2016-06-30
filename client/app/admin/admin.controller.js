@@ -13,10 +13,10 @@ angular.module('shopnxApp')
       $scope.settings = res[0];
     });
     $scope.saveSettings = function(settings) {
-      // if(Settings.demo){
-      //   toastr.error('Will not save in demo mode');
-      //   return;
-      // }
+      if(Settings.demo){
+        toastr.error('Will not save in demo mode');
+        return;
+      }
       $scope.submitted = true;
       if(settings._id) {
           Setting.update({ id:settings._id }, settings).$promise.then(function(res) {

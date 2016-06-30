@@ -1,3 +1,9 @@
+<style>
+       #map {
+        width: 100%;
+        height: 400px;
+      }
+    </style>
 <div class="col-md-12">
     <ul class="breadcrumb">
         <li><a href="/">Home</a>
@@ -16,9 +22,9 @@ _________________________________________________________ -->
 
         <div class="panel-body">
             <ul class="nav nav-pills nav-stacked">
-               <!--  <li>
+                <li>
                     <a href="#">Text page</a>
-                </li> -->
+                </li>
                 <li>
                     <a href="#">Contact page</a>
                 </li>
@@ -34,57 +40,102 @@ _________________________________________________________ -->
     <!-- *** PAGES MENU END *** -->
 
 
-    <!-- <div class="banner">
+    <div class="banner">
         <a href="#">
             <img src="/assets/img/banner.jpg" alt="sales 2014" class="img-responsive">
         </a>
-    </div> -->
+
+        <h3>Live Chat</h3>
+        <div>
+        	<button ng-click="openChat('md')" ><i class="fa fa-comment-o"></i></button> 
+        </div>
+       
+    </div>
 </div>
 
 <div class="col-md-9">
 
 
     <div class="box" id="contact">
-        <h1>Contact</h1>
+        <h3>Contact Us</h3>
 
-        <p class="lead">Are you curious about something? Or do you have some kind of problem with our product?</p>
+        <p class="lead">Are you curious about something? Do you have some kind of problem with our products?</p>
         <p>Please feel free to contact us, our customer service center is working for you 24/7.</p>
 
         <hr>
 
-        <div class="row">
+         <div class="row">
             <div class="col-sm-4">
                 <h3><i class="fa fa-map-marker"></i> Address</h3>
-                <p>630 Churchill Avenue
-                    <br>Mt Pleasent
+                <p>Office 3 ,3rd Floor
+                    <br>Travel Plaza
+                    <br>29 Mazowe Street
+                    <br>Harare
                     <br>
-                    <strong>Harare</strong>
+                    <strong>Zimbabwe</strong>
                 </p>
-            </div>
+            </div> 
             <!-- /.col-sm-4 -->
             <div class="col-sm-4">
+
+            	<!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Launch Bootstrap modal
+    </button>
+    <button type="button" onclick="openInExternalWindow()" class="btn btn-primary btn-lg">
+      Launch External window
+    </button>
                 <h3><i class="fa fa-phone"></i> Call center</h3>
-                <p class="text-muted">Or you can get hold of us on the following number</p>
-                <p><strong>+263 773439246</strong>
+                <p class="text-muted">Drop us a line at the number below.</p>
+                <p><strong>077</strong>
                 </p>
-            </div>
+            </div> 
             <!-- /.col-sm-4 -->
             <div class="col-sm-4">
                 <h3><i class="fa fa-envelope"></i> Electronic support</h3>
-                <p class="text-muted">Please feel free to write an email to us </p>
+                <p class="text-muted">Please feel free to write an email to us or to </p>
                 <ul>
-                    <li><strong><a href="mailto:">simba@uztech.co.zw</a></strong>
+                    <li><strong><a href="mailto:">info@aardath.com</a></strong>
                     </li>
-                    <!-- <li><strong><a href="#">Ticketio</a></strong> - our ticketing support platform</li> -->
+                    
                 </ul>
-            </div>
+            </div> 
             <!-- /.col-sm-4 -->
-        </div>
+        <!-- </div> -->
         <!-- /.row -->
 
         <hr>
+        <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <irontec-simple-chat
+                messages="messages"
+                username="username"
+                input-placeholder-text="You can write here"
+                submit-button-text="Send your message"
+                title="Super Awesome Chat"
+                theme="material"
+                submit-function="sendMessage"
+                visible="true">
+              </irontec-simple-chat>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
         <div id="map">
+
+
 
         </div>
 
@@ -113,8 +164,14 @@ _________________________________________________________ -->
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" class="form-control" id="subject">
+                        <label for="subject" >Subject</label>
+                        <select class="form-control"  id="subject"> 
+                        	<option>Online Shoping</option>
+                        	<option>Market Place</option>
+                        	<option>Order In</option>
+                        	<option>Ticketing</option>
+                        </select>
+                        
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -138,3 +195,23 @@ _________________________________________________________ -->
 
 </div>
 <!-- /.col-md-9 -->
+
+<script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+            center: {lat: 31.0445349, lng: -17.81771},
+            zoom: 8
+        });
+      }
+    </script>
+
+    <script>
+        function openInExternalWindow() {
+            window.open("index.html", "", "width=400, height=600");
+        }
+    </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7BgKkH5f7m1N_LMhmcXsWk_sz4GyDknw&callback=initMap">
+    </script>

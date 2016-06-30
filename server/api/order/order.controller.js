@@ -10,14 +10,6 @@ exports.myOrders = function(req, res) {
     return res.status(200).json(orders);
   });
 };
-// get publisher orders
-exports.pubOrders = function(req, res) {
-   Order.find({'items.uid' : req.user.email},function (err, orders) {
-    if(err) { return handleError(res, err); }
-    console.log(orders);
-    return res.status(200).json(orders);
-  });
-};
 
 // Get list of orders
 exports.index = function(req, res) {

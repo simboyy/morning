@@ -31,8 +31,7 @@
     "tag": "v0.1.0",
     "commit": "31b81ce410fedb98ccf5bde3cede6405e68b2deb"
   },
-  "_source": "git://github.com/RB-Lab/angular-random-string.git",
+  "_source": "https://github.com/RB-Lab/angular-random-string.git",
   "_target": "~0.1.0",
-  "_originalSource": "angular-random-string",
-  "_direct": true
+  "_originalSource": "angular-random-string"
 }

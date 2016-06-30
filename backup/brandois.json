@@ -1,0 +1,3 @@
+{"__v":0,"_id":{"$oid":"5607c58bdddfb6780c5bddf3"},"active":true,"info":"Estelle","name":"Estelle","slug":"estelle","updated":{"$date":"2016-06-26T08:55:27.799Z"}}
+{"__v":0,"_id":{"$oid":"5607c599dddfb6780c5bddf4"},"active":true,"info":"FREECULTR","name":"FREECULTR","slug":"freecultr","updated":{"$date":"2016-06-26T08:55:27.801Z"}}
+{"__v":0,"_id":{"$oid":"5607c5c1dddfb6780c5bddf8"},"active":true,"info":"Alleviater","name":"Alleviater","slug":"alleviater","updated":{"$date":"2016-06-26T08:55:27.805Z"}}

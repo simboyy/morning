@@ -1,35 +1,24 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('ProductCtrl', function ($scope, socket, Product, Category, Brand, Statistic,Feature, Modal, toastr, $loading, Settings) {
+  .controller('ProductCtrl', function ($scope, socket, Product, Category, Brand, Feature, Modal, toastr, $loading, Settings) {
     var cols = [
       {heading:'sku',dataType:'text', sortType:'lowercase'},
       {heading:'name',dataType:'text', sortType:'lowercase'},
       {heading:'info',dataType:'text', sortType:'lowercase'}
     ];
-
-
     // var cols = ['sku','name','nameLower','slug','status','info','uid', 'active','img'];
-    // $scope.variantsNew = {"name":"Mailing List","price":25,"size":"800x400","maxSize":"","formart":"PNG,GIF,JPEG"},{"name":"SMS","price":25,"size":"","maxSize":"","formart":"text"};
-    // $scope.statsNew = {"key":"Digital Subscribers","val":"50 K"},{"key":"SMS Reach","val":"25 K"},{"key":"Total Audience","val":"126 K"};
-    $scope.file = {};
     $scope.products = [];
     $scope.product = {};
     $scope.variant = {};
-    $scope.stats = {};
-    $scope.feature = {};
-    $scope.newStats = {};
     $scope.newFeature = {};
     $scope.newKF = {};
-    $scope.product.logo = [];
-    $scope.product.stats = [];
     $scope.product.variants = [];
     $scope.product.features = [];
     $scope.product.keyFeatures = [];
     // $scope.selected = {};
     // $scope.selected.feature = [];
     $scope.features = Feature.query();
-     $scope.statistics = Statistic.query();
     // $scope.items=$scope.features.map(function(name){ return { key:key,val:val}; })
     // $scope.selected.feature[0] = {"key":"Fit","val":"Tight"};
     $loading.start('products');
@@ -44,35 +33,20 @@ angular.module('shopnxApp')
     $scope.brands = Brand.query(function() {
       socket.syncUpdates('brand', $scope.brands);
     });
+
     $scope.edit = function(product) {
       var title; if(product.name){ title = 'Editing ' + product.name;} else{ title = 'Add New';}
       Modal.show(product,{title:title, api:'Product', columns: cols});
     };
+
     $scope.delete = function(product) {
-      // if(Settings.demo){
-      //   toastr.error('Delete not allowed in demo mode');
-      //   return;
-      // }
+      
       if(confirm('Are you sure to delete the product?')){
         Product.delete({id:product._id});
       }
     };
-
-    $scope.preview = function (adspace) {
-      console.log(adspace);
-      // body...
-    }
     $scope.save = function(product){
-      // if(Settings.demo){
-      //   toastr.error('Save not allowed in demo mode');
-      //   return;
-      // }
-      console.log(product);
-
       
-      $scope.product = product;
-
-
       if('variants' in $scope.product){
       }else{
           $scope.product.variants = [];
@@ -86,58 +60,34 @@ angular.module('shopnxApp')
           $scope.product.features = [];
       }
 
-      if('stats' in $scope.product){
-      }else{
-          $scope.product.features = [];
-      }
-
-      if('name' in $scope.variant){
+      if('price' in $scope.variant){
         $scope.product.variants.push($scope.variant);
-        // console.log($scope.product.variants);
+         console.log($scope.product.variants);
       }
       // console.log($scope.newKF);
       if('val' in $scope.newKF){
-        $scope.product.keyFeatures.push($scope.newKF);
+        $scope.product.keyFeatures.push($scope.newKF.val);
         console.log($scope.product.keyFeatures);
       }
       if('key' in $scope.newFeature){
         $scope.product.features.push($scope.newFeature);
         // console.log($scope.product.features);
       }
-      if('key' in $scope.newStats){
-         // alert("found some feature stats");
-         console.log($scope.newStats);
-           $scope.product.stats.push($scope.newStats);
-      }
+      $scope.variant = {};
+      $scope.newKF = {};
+      $scope.newFeature = {};
 
-      
       // $scope.feature.key = feature.key.name;
       // $scope.product.feature = $scope.selected.feature;
 
       // console.log($scope.selected.feature);
       if('_id' in product){
-
-        // delete product
-
-          Product.delete({id:product._id},function(){
-            console.log("product deleted");
-
-              Product.save($scope.product).$promise.then(function() {
-               toastr.success("Product info saved successfully","Success");
+          Product.update({ id:$scope.product._id }, $scope.product).$promise.then(function() {
+            toastr.success("Product info saved successfully","Success");
+          }, function(error) { // error handler
+            var err = error.data.errors;
+            toastr.error(err[Object.keys(err)].message,err[Object.keys(err)].name);
           });
-          });
-
-
-          // Product.update({ id:$scope.product._id }, $scope.product).$promise.then(function(data) {
-          //   console.log(data);
-          //   toastr.success("Product info saved successfully","Success");
-
-          // }, function(error) { // error handler
-          //   var err = error.data.errors;
-          //   toastr.error(err[Object.keys(err)].message,err[Object.keys(err)].name);
-          // });
-
-          // regenerate product
         }
         else{
           Product.save($scope.product).$promise.then(function() {
@@ -147,11 +97,6 @@ angular.module('shopnxApp')
               toastr.error(err[Object.keys(err)].message,err[Object.keys(err)].name);
           });
         }
-
-      $scope.variant = {};
-      $scope.newKF = {};
-      $scope.newFeature = {};
-      $scope.newStats = {};
     };
     $scope.changeActive = function(b){ // success handler
       b.active = !b.active;

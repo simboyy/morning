@@ -1,15 +1,70 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('NavbarCtrl', ['$scope', '$rootScope', '$location', 'Auth', '$modal', 'Cart', 'Category', 'Brand', 'SortOptions', '$q', 'Product', '$state', function ($scope, $rootScope, $location, Auth, $modal, Cart, Category, Brand,SortOptions,$q, Product, $state) {
+  .controller('NavbarCtrl', ['$scope', '$rootScope', '$location', 'Auth', '$modal', 'Cart', 'Wishlist','Category','CategoryMP','CategoryOI','CategoryTNG', 'Brand', 'SortOptions', '$q', 'Product', '$state', function ($scope,$rootScope, $location, Auth, $modal, Cart, Wishlist,Category,CategoryMP,CategoryTNG,CategoryOI, Brand,SortOptions,$q, Product, $state) {
+       $scope.toggleLeft = buildDelayedToggler('left');
+    $scope.toggleRight = buildToggler('right');
+    $scope.isOpenRight = function(){
+      return $mdSidenav('right').isOpen();
+    };
+
+    /**
+     * Supplies a function that will continue to operate until the
+     * time is up.
+     */
+    function debounce(func, wait, context) {
+      var timer;
+
+      return function debounced() {
+        var context = $scope,
+            args = Array.prototype.slice.call(arguments);
+        $timeout.cancel(timer);
+        timer = $timeout(function() {
+          timer = undefined;
+          func.apply(context, args);
+        }, wait || 10);
+      };
+    }
+
+    /**
+     * Build handler to open/close a SideNav; when animation finishes
+     * report completion in console
+     */
+    function buildDelayedToggler(navID) {
+      return debounce(function() {
+        // Component lookup should always be available since we are not using `ng-if`
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      }, 200);
+    }
+
+    function buildToggler(navID) {
+      return function() {
+        // Component lookup should always be available since we are not using `ng-if`
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      }
+    }
+
     $scope.hideSubMenu = function(){
       // $('.megamenu .dropdown:hover .dropdown-menu').hide(); // Hide the navbar submenu once a category is selected
     }
     $rootScope.cart = Cart.cart;
+    $rootScope.wishlist = Wishlist.wishlist;
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
     }];
+
+     $rootScope.nav= null;
+
+    $scope.result = null;
 
     $rootScope.brands = Brand.query({active:true});
     $rootScope.sortOptions = SortOptions.server;
@@ -20,14 +75,16 @@ angular.module('shopnxApp')
     $rootScope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    var user = $scope.getCurrentUser();
-
-    console.log(user);
-
-    $rootScope.user = user;
-
     $rootScope.checkCart = function(id){
         if(!_.contains($scope.cart.skuArray, id)){
+            return true;
+        }else{
+            return false;
+        }
+    };
+
+    $rootScope.checkWishlist = function(id){
+        if(!_.contains($scope.wishlist.skuArray, id)){
             return true;
         }else{
             return false;
@@ -38,6 +95,14 @@ angular.module('shopnxApp')
         for(var i = 0;i<$scope.cart.items.length;i++){
             if($scope.cart.items[i].sku === sku){
               return $scope.cart.items[i].quantity;
+            }
+        }
+    };
+
+    $rootScope.getQuantityWishlist = function(sku){
+        for(var i = 0;i<$scope.wishlist.items.length;i++){
+            if($scope.wishlist.items[i].sku === sku){
+              return $scope.wishlist.items[i].quantity;
             }
         }
     };
@@ -56,7 +121,19 @@ angular.module('shopnxApp')
         $scope.search = '';
     };
 
+    $scope.navigate = function(nav) {
+
+    	$rootScope.nav = nav;
+    	console.log(nav);
+    	$location.replace().path('Category'+'/'+nav.slug+'/'+nav.id);
+    
+    }
+
     $scope.categories = Category.all.query();
+    $scope.categoriesMP = CategoryMP.all.query();
+    $scope.categoriesTNG= CategoryOI.all.query();
+
+    $scope.categoriesOI = CategoryTNG.all.query();
 
 // // Script which calls all category from parent 0 and constructs the category hierarchy
 // // This was moved to the server and now 1 call does it all instead 1 for each parent category + 1 for parent category itself
@@ -119,6 +196,7 @@ angular.module('shopnxApp')
                 templateUrl: 'app/cart/cart.html',
                 controller: cartEditCtrl,
                 controllerAs: 'modal',
+                size:"lg",
                 windowClass: 'ab-modal-window',
                 resolve: {
                     cart: function () { return cart; },
@@ -134,4 +212,49 @@ angular.module('shopnxApp')
             };
         };
         cartEditCtrl.$inject = ['$scope', '$modalInstance', 'cart'];
-  }]);
+
+        $scope.openWishlist = function (wishlist) {
+            wishlist= $scope.wishlist = wishlist;
+            // console.log(cart);
+
+            var modalOptions = {
+                templateUrl: 'app/wishlist/wishlist.html',
+                controller: wishlistEditCtrl,
+                controllerAs: 'modal',
+                size:"lg",
+                windowClass: 'ab-modal-window',
+                resolve: {
+                    wishlist: function () { return wishlist; },
+                }
+            };
+            $modal.open(modalOptions);
+
+        };
+        var wishlistEditCtrl = function ($scope, $modalInstance, wishlist) {
+            $scope.wishlist = wishlist;
+            $scope.cancel = function () {
+                $modalInstance.dismiss('Close');
+            };
+        };
+        wishlistEditCtrl.$inject = ['$scope', '$modalInstance', 'wishlist'];
+  }])
+
+.controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    $scope.close = function () {
+      // Component lookup should always be available since we are not using `ng-if`
+      $mdSidenav('left').close()
+        .then(function () {
+          $log.debug("close LEFT is done");
+        });
+
+    };
+  })
+  .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    $scope.close = function () {
+      // Component lookup should always be available since we are not using `ng-if`
+      $mdSidenav('right').close()
+        .then(function () {
+          $log.debug("close RIGHT is done");
+        });
+    };
+  });

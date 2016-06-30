@@ -3,46 +3,20 @@
 angular.module('shopnxApp')
   .controller('OrderCtrl', function ($scope, Order, toastr) {
     $scope.orderStatusLov = Order.status;
-
     $scope.orders = Order.my.query({},function(res){
       var total=0;
-      for(var i=0;i<res.length;i++){
+      // for(var i=0;i<res.length;i++){
       //     var subTotal = 0;
-      var  item=res[i];
-          for (var j = 0; j < item.items.length; j++) {
-
-                // items[i].total = 0;
-              
-               var p = item.items[j].price;
-               var q = item.items[j].quantity;
-               total+=(p*q);
-               // var x.sub.push(total);
-             }
-          // res.total = total;
+          for(var j=0;j<res.length;j++){
+          // console.log();
+              // subTotal += res[i].shipping.charge;
+              total += res[j].shipping.total;
+          }
+          res.total = total;
           console.log(total);
-      }
-      res.total = total;
+      // }
+      // res.total = total;
     });
-
-     $scope.getTotal = function(item){
-      // console.log(item);
-      var total = 0
-
-      for (var i = 0; i < item.items.length; i++) {
-
-                // items[i].total = 0;
-              
-               var p = item.items[i].price;
-               var q = item.items[i].quantity;
-               total+=(p*q);
-               // var x.sub.push(total);
-             }
-      // console.log(total);
-
-      return total;
-
- }
-    console.log($scope.orders);
     $scope.changeStatus = function(order){
       Order.update({ id:order._id }, order).$promise.then(function(res) {
         console.log(res);
