@@ -24,7 +24,7 @@
     "tag": "0.5.0",
     "commit": "bc85c3d5a05874d0e2151e5dd75b64f05adff677"
   },
-  "_source": "git://github.com/vitalets/checklist-model.git",
+  "_source": "https://github.com/vitalets/checklist-model.git",
   "_target": "~0.5.0",
   "_originalSource": "checklist-model"
 }

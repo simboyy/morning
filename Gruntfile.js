@@ -342,9 +342,13 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'bower_components/**/*.min.js                              ',
+            'bower_components/**/*.min.js',
             'assets/images/{,*/}*.{webp}',
             'assets/clothing/*',
+            'assets/slider/*',
+            'assets/products/*',
+            'assets/categories/*',
+            'assets/featured/*',
             'assets/img/*',
             'fonts/**/*',
             'index.html'

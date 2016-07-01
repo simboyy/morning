@@ -4,7 +4,6 @@
 
 'use strict';
 
-
 var express = require('express');
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
@@ -28,8 +27,7 @@ module.exports = function(app) {
   app.set('view engine', 'html');
   app.use(compression());
   app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json({limit: '5mb'}));
-  app.use(bodyParser.urlencoded({limit: '5mb'}));
+  app.use(bodyParser.json());
   app.use(methodOverride());
   app.use(cookieParser());
   app.use(passport.initialize());
@@ -47,17 +45,10 @@ module.exports = function(app) {
   }));
   
   if ('production' === env) {
-
-    // app.use(require('connect-livereload')());
-    app.use(express.static(path.join(config.root, '.tmp')));
-    app.use(express.static(path.join(config.root, 'client')));
-    app.set('appPath', path.join(config.root, 'client'));
+    app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
+    app.use(express.static(path.join(config.root, 'public')));
+    app.set('appPath', path.join(config.root, 'public'));
     app.use(morgan('dev'));
-    app.use(errorHandler()); // Error handler - has to be last
-    // app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
-    // app.use(express.static(path.join(config.root, 'public')));
-    // app.set('appPath', path.join(config.root, 'public'));
-    // app.use(morgan('dev'));
   }
 
   if ('development' === env || 'test' === env) {

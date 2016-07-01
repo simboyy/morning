@@ -38,7 +38,7 @@
     "tag": "1.5.0",
     "commit": "4ac181c4aac7b66fddb213b0da3a0287ab23d9ba"
   },
-  "_source": "git://github.com/Foxandxss/angular-toastr.git",
+  "_source": "https://github.com/Foxandxss/angular-toastr.git",
   "_target": "~1.5.0",
   "_originalSource": "angular-toastr"
 }

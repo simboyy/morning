@@ -31,97 +31,7 @@
    
 
       
-    <!-- <div class="col-md-3">
-
-     <div class="panel panel-default sidebar-menu">
-
-         <div class="panel-heading">
-             <h3 class="panel-title">Price Range <a class="btn btn-xs btn-danger pull-right" href="" ng-click="resetPriceRange();"><i class="fa fa-times-circle"></i> Reset</a></h3>
-         </div>fw
-
-         <div class="panel-body">
-
-             <form>
-                 <div class="form-group">
-                   <rzslider
-                     rz-slider-floor="priceSlider.floor"
-                     rz-slider-ceil="priceSlider.ceil"
-                     rz-slider-model="priceSlider.min"
-                     rz-slider-high="priceSlider.max"
-                     rz-slider-translate="currencyFormatting"
-                     rz-slider-on-end="filter()"></rzslider>
-
-                    $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
-                 </div>
-
-             </form>
-
-         </div>
-      </div>
-
-      <div class="panel panel-default sidebar-menu">
-
-          <div class="panel-heading">
-              <h3 class="panel-title">Brands
-                <div class="nav-search" id="nav-search">
-                        <span class="input-icon">
-                            <input placeholder="Filter Brands ..." class="nav-search-input" ng-model="filterBrand" autocomplete="off" type="text" autofocus style="width:100%">
-                            <i class="search-icon fa fa-search nav-search-icon"></i>
-                        </span>
-                </div>
-              </h3>
-          </div>
-
-          <div class="panel-body brand-filter-panel">
-
-              <form>
-                  <div class="form-group">
-                      <div class="checkbox" ng-repeat="b in brands | filter:filterBrand">
-                          <label>
-                            <input type="checkbox" value="{{b.name}}" checklist-model="fl.brands" checklist-value="b" ng-click="filter();" />
-                            {{b.name}}<span>&nbsp;</span>
-                          </label>
-                      </div>
-                  </div>
-
-<a class="btn btn-xs btn-warning pull-right" href="" ng-repeat="b in fl.brands" ng-click="removeBrand(b);" style="margin:0 0 5px 5px;"><i class="fa fa-times-circle"></i> {{b.name}}</a>
-              </form>
-
-          </div>
-      </div>
-
-      <div class="panel panel-default sidebar-menu">
-
-          <div class="panel-heading">
-              <h3 class="panel-title">Features
-                <div class="nav-search" id="nav-search">
-                        <span class="input-icon">
-                            <input placeholder="Filter Features ..." class="nav-search-input" ng-model="filterFeature" autocomplete="off" type="text" autofocus style="width:100%">
-                            <i class="search-icon fa fa-search nav-search-icon"></i>
-                        </span>
-                </div>
-              </h3>
-          </div>
-
-          <div class="panel-body">
-              <form>
-                  <div class="form-group">
-                    <div ng-repeat="k in features | filter:filterFeature">
-                        <h4>{{k.key}}</h4>
-                        <div class="checkbox" ng-repeat="f in k.v">
-                            <label>
-                              <input type="checkbox" value="{{f}}" checklist-model="fl.features[k.key]" checklist-value="f" ng-click="filter();" />
-                              {{f}}<span>&nbsp;</span>
-                            </label>
-                        </div>
-                    </div>
-                  </div>
-              </form>
-          </div>
-      </div>
-
-
-                </div> -->
+    
 
             <div>
 
@@ -336,36 +246,7 @@
                               </div>
                           </div>
                       </div>
-                      <!-- <div class="col-md-3 col-sm-6" ng-repeat="product in products.items">
-                            <div class="product" style="width:178px;height:300px;margin-top:10px">
-                                
-                                <div>
-                                    <a ui-sref="productDetail({id:product._id, slug:product.slug})">
-                                        <img ng-src="/assets/products/{{product.variants[0].image}}"
-                                            err-src="/assets/images/photo.png" class="img-responsive">
-                                    </a>
-                                </div> -->
-                        
-                                <!-- <div class="text text-center">
-                                    <a ui-sref="productDetail({id:product._id, slug:product.slug})">
-                                    {{product.variants[0].price|currency}}<br/>{{product.name}}{{product.variants[0].size}}</a>
-                                    <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '$'}}</del> {{product.variants[0].price | currency : '$'}}</p>
-                                    <p class="buttons">
-                                      <div class="btn-group">
-                                      <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default">View detail</a>
-                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, -1)" ng-hide="checkCart(product._id)" class="btn btn-info">-</a>
-
-                                      <a ng-hide="checkCart(product._id)" class="btn btn-info">{{getQuantity(product._id);}}</a>
-
-                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, +1)" ng-hide="checkCart(product._id)" class="btn btn-info">+</a>
-                                      </div>
-                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" ng-show="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </p>
-                                </div> -->
-                                <!-- /.text -->
-                            <!-- </div> -->
-                            <!-- /.product -->
-                        <!-- </div> -->
+                     
 
                         <!-- /.col-md-4 -->
                     </div>
